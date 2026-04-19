@@ -95,21 +95,7 @@ pip install -r requirements.txt
 
 Create a file named `.env` inside `d:\FoodBridgeProject\foodbridge\backend\` with this content:
 
-```env
-SECRET_KEY=b91696ab14b0b8e72c83ff160fba4c107beed0ab3b72352136
-DEBUG=True
-DATABASE_URL=sqlite:///db.sqlite3
-EMAIL_BACKEND_TYPE=gmail
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_HOST_USER=prajapatisanketssp321321@gmail.com
-EMAIL_HOST_PASSWORD=Mypasssanket@123
-DEFAULT_FROM_EMAIL=prajapatisanketssp321321@gmail.com
-FRONTEND_URL=http://localhost:5173
-ALLOWED_HOSTS=localhost,127.0.0.1
-CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
-```
+
 
 > 💡 This file already exists at `d:\FoodBridgeProject\foodbridge\backend\.env` — no action needed if running on the same machine.
 
