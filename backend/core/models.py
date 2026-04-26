@@ -30,3 +30,17 @@ class Organization(models.Model):
   service_radius_km=models.PositiveIntegerField(default=10)
   verification_status=models.CharField(max_length=10,choices=VSTATUS,default='PENDING')
   rejection_reason=models.TextField(blank=True,null=True); created_at=models.DateTimeField(auto_now_add=True)
+
+class Notification(models.Model):
+  TYPES=[('DONATION_CLAIMED','Claimed'),('PICKUP_COMPLETE','Pickup Complete'),('HOLD_EXPIRED','Hold Expired'),('NO_SHOW','No Show'),('NGO_VERIFIED','Verified'),('NGO_REJECTED','Rejected')]
+  recipient=models.ForeignKey(User,on_delete=models.CASCADE,related_name='notifications')
+  related_donation_id=models.PositiveIntegerField(null=True,blank=True)
+  notification_type=models.CharField(max_length=20,choices=TYPES)
+  title=models.CharField(max_length=255); message=models.TextField()
+  is_read=models.BooleanField(default=False); created_at=models.DateTimeField(auto_now_add=True)
+
+class EmailLog(models.Model):
+  STATUS=[('SENT','Sent'),('FAILED','Failed')]
+  recipient_email=models.EmailField(); subject=models.CharField(max_length=255)
+  body=models.TextField(); status=models.CharField(max_length=10,choices=STATUS,default='SENT')
+  error_message=models.TextField(blank=True,null=True); sent_at=models.DateTimeField(auto_now_add=True)

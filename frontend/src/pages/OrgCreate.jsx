@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Building2, MapPin, Globe, Loader2 } from 'lucide-react'
+import { Building2, MapPin, Loader2 } from 'lucide-react'
 import Layout from '../components/Layout'
 import Button from '../components/ui/Button'
 import Toast from '../components/ui/Toast'
+import AddressAutocomplete from '../components/ui/AddressAutocomplete'
 import { api } from '../utils/api'
 
 export default function OrgCreate() {
@@ -86,8 +87,23 @@ export default function OrgCreate() {
             </div>
             
             <div>
-              <label className="form-label">Address</label>
-              <textarea required className="textarea-field h-24" placeholder="Full street address..." value={formData.address} onChange={e => setFormData({ ...formData, address: e.target.value })} />
+              <AddressAutocomplete
+                label="Organization Address"
+                placeholder="Search your NGO address..."
+                value={formData.address}
+                required
+                onChange={(addr, lat, lng) => setFormData(prev => ({
+                  ...prev,
+                  address: addr,
+                  location_lat: lat ? lat.toFixed(6) : prev.location_lat,
+                  location_lng: lng ? lng.toFixed(6) : prev.location_lng,
+                }))}
+              />
+              {formData.location_lat && (
+                <p className="text-xs text-primary font-mono mt-1">
+                  Coordinates auto-set: {formData.location_lat}, {formData.location_lng}
+                </p>
+              )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -105,19 +121,25 @@ export default function OrgCreate() {
           <div className="card p-8 space-y-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-heading font-bold text-xl">Location & Radius</h2>
-              <Button variant="secondary" size="sm" onClick={detectLocation} loading={loading}><MapPin size={16}/> Detect My Location</Button>
+              <Button variant="secondary" size="sm" type="button" onClick={detectLocation} loading={loading}>
+                <MapPin size={16}/> Use GPS Instead
+              </Button>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="form-label">Latitude</label>
-                <input type="number" step="0.000001" required className="input-field" value={formData.location_lat} onChange={e => setFormData({ ...formData, location_lat: e.target.value })} />
+
+            {/* Show coordinates if detected */}
+            {formData.location_lat ? (
+              <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-button px-4 py-2">
+                <MapPin size={16} className="text-primary" />
+                <span className="font-mono text-sm text-primary font-bold">
+                  {formData.location_lat}, {formData.location_lng}
+                </span>
+                <span className="text-xs text-text-muted ml-1">coordinates saved</span>
               </div>
-              <div>
-                <label className="form-label">Longitude</label>
-                <input type="number" step="0.000001" required className="input-field" value={formData.location_lng} onChange={e => setFormData({ ...formData, location_lng: e.target.value })} />
-              </div>
-            </div>
+            ) : (
+              <p className="text-xs text-text-muted font-body">
+                Coordinates will be set automatically when you pick an address above. Or use GPS.
+              </p>
+            )}
 
             <div>
               <label className="form-label">Service Radius (km)</label>

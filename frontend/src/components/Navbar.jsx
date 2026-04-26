@@ -8,12 +8,20 @@ export default function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
   const [user, setUser] = useState(null)
+  const [unreadCount, setUnreadCount] = useState(0)
 
   useEffect(() => {
     const token = localStorage.getItem('access_token')
     const role = localStorage.getItem('user_role')
     const name = localStorage.getItem('user_name')
-    if (token) setUser({ role, name })
+    if (token) {
+      setUser({ role, name })
+      import('../utils/api').then(({ api }) => {
+        api.get('/notifications/unread-count/').then(res => {
+          if (res) res.json().then(data => setUnreadCount(data.count || 0))
+        })
+      })
+    }
     else setUser(null)
     setDropdownOpen(false)
     setIsOpen(false)
@@ -54,9 +62,14 @@ export default function Navbar() {
                 <Link to="/my-claims" className={navLink}>My Claims</Link>
               )}
 
-              {/* Activity Bell */}
-              <Link to="/activity" className="relative p-2 text-text-secondary hover:text-primary transition-colors">
+              {/* Notification Bell */}
+              <Link to="/notifications" className="relative p-2 text-text-secondary hover:text-primary transition-colors">
                 <Bell size={18} />
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center rounded-full bg-red-500 text-white font-mono text-xs">
+                    {unreadCount}
+                  </span>
+                )}
               </Link>
 
               {/* User Dropdown */}
@@ -73,7 +86,7 @@ export default function Navbar() {
                   <div className="absolute right-0 mt-2 w-44 bg-white rounded-card shadow-card-hover border border-surface-border py-1 animate-fade-up">
                     <Link to="/profile" className="block px-4 py-2.5 text-sm text-text-primary hover:bg-surface-muted transition-colors"><User size={14} className="inline mr-2"/>Profile</Link>
                     {user.role === 'NGO' && <Link to="/org/profile" className="block px-4 py-2.5 text-sm text-text-primary hover:bg-surface-muted transition-colors">NGO Settings</Link>}
-                    <Link to="/activity" className="block px-4 py-2.5 text-sm text-text-primary hover:bg-surface-muted transition-colors"><Bell size={14} className="inline mr-2"/>Activity</Link>
+                    <Link to="/notifications" className="block px-4 py-2.5 text-sm text-text-primary hover:bg-surface-muted transition-colors"><Bell size={14} className="inline mr-2"/>Notifications</Link>
                     <hr className="my-1 border-surface-border"/>
                     <button onClick={logout} className="block w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors font-medium"><LogOut size={14} className="inline mr-2"/>Sign Out</button>
                   </div>
@@ -108,7 +121,10 @@ export default function Navbar() {
                   <Link to="/my-donations" className="block px-3 py-2.5 text-text-primary hover:text-primary hover:bg-surface-muted rounded-md text-sm font-medium" onClick={() => setIsOpen(false)}>My Items</Link>
                 </>}
                 {user.role === 'NGO' && <Link to="/my-claims" className="block px-3 py-2.5 text-text-primary hover:text-primary hover:bg-surface-muted rounded-md text-sm font-medium" onClick={() => setIsOpen(false)}>My Claims</Link>}
-                <Link to="/activity" className="block px-3 py-2.5 text-text-primary hover:text-primary hover:bg-surface-muted rounded-md text-sm font-medium" onClick={() => setIsOpen(false)}>Activity</Link>
+                <Link to="/notifications" className="block px-3 py-2.5 text-text-primary hover:text-primary hover:bg-surface-muted rounded-md text-sm font-medium flex justify-between items-center" onClick={() => setIsOpen(false)}>
+                  Notifications
+                  {unreadCount > 0 && <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">{unreadCount}</span>}
+                </Link>
                 <Link to="/profile" className="block px-3 py-2.5 text-text-primary hover:text-primary hover:bg-surface-muted rounded-md text-sm font-medium" onClick={() => setIsOpen(false)}>Profile</Link>
                 <button onClick={() => { logout(); setIsOpen(false) }} className="block w-full text-left px-3 py-2.5 text-red-600 font-bold hover:bg-red-50 rounded-md text-sm">Sign Out</button>
               </>

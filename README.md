@@ -118,8 +118,8 @@ Running migrations:
 ```powershell
 python manage.py shell -c "
 from core.models import User
-if not User.objects.filter(email='admin@foodbridge.com').exists():
-    User.objects.create_superuser('admin@foodbridge.com', 'admin123', full_name='System Admin')
+if not User.objects.filter(email='prajapatisanketssp321@gmail.com').exists():
+    User.objects.create_superuser('prajapatisanketssp321@gmail.com', 'sanket', full_name='Sanket Prajapati')
     print('Admin created')
 else:
     print('Admin already exists')

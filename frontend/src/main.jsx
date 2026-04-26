@@ -17,12 +17,19 @@ import DonationList from './pages/DonationList'
 import DonationDetail from './pages/DonationDetail'
 import MyDonations from './pages/MyDonations'
 import MyClaims from './pages/MyClaims'
+import Notifications from './pages/Notifications'
+import AdminLogin from './pages/AdminLogin'
+import AdminDashboard from './pages/AdminDashboard'
 import PrivateRoute from './components/PrivateRoute'
+import Layout from './components/Layout'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path="/foodbridgeapplication/admin" element={<AdminLogin />} />
+        <Route path="/foodbridgeapplication/admin/dashboard" element={<PrivateRoute allowedRoles={['ADMIN']}><AdminDashboard /></PrivateRoute>} />
+        
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/health" element={<HealthCheck />} />
@@ -33,6 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/donations/:id" element={<DonationDetail />} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
         <Route path="/activity" element={<PrivateRoute><Activity /></PrivateRoute>} />
+        <Route path="/notifications" element={<PrivateRoute><Notifications /></PrivateRoute>} />
         <Route path="/donate" element={<PrivateRoute allowedRoles={['DONOR']}><Donate /></PrivateRoute>} />
         <Route path="/my-donations" element={<PrivateRoute allowedRoles={['DONOR']}><MyDonations /></PrivateRoute>} />
         <Route path="/my-claims" element={<PrivateRoute allowedRoles={['NGO']}><MyClaims /></PrivateRoute>} />

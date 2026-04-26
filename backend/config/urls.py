@@ -26,6 +26,15 @@ urlpatterns = [
     path('api/claims/create/', views_claims.claim_create),
     path('api/claims/my/', views_claims.my_claims),
     path('api/claims/<int:pk>/verify-otp/', views_claims.verify_otp),
+    path('api/notifications/', views.notifications_list),
+    path('api/notifications/unread-count/', views.notifications_unread_count),
+    path('api/notifications/<int:pk>/read/', views.notification_read),
+    path('api/notifications/read-all/', views.notifications_read_all),
+    path('api/admin/stats/', views.admin_stats),
+    path('api/admin/ngos/pending/', views.admin_pending_ngos),
+    path('api/admin/ngos/<int:pk>/verify/', views.admin_verify_ngo),
+    path('api/admin/ngos/<int:pk>/reject/', views.admin_reject_ngo),
+    path('api/admin/email-logs/', views.admin_email_logs),
 ]
 
 from django.conf import settings

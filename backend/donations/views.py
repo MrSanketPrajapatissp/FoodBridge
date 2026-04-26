@@ -44,6 +44,14 @@ def donation_create(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def donation_list(request):
+    # Lazy cleanup: release stale claims (>45 min without pickup)
+    from .tasks import release_stale_claims, expire_donations
+    try:
+        release_stale_claims(timeout_minutes=45)
+        expire_donations()
+    except Exception as e:
+        print(f"[WARN] Cleanup error: {e}")
+
     lat = request.query_params.get('lat')
     lng = request.query_params.get('lng')
     food_type = request.query_params.get('food_type')
@@ -55,12 +63,14 @@ def donation_list(request):
     dons = list(qs)
     for d in dons:
         if lat and lng:
-            d.distance_km = haversine_distance(lat, lng, d.location_lat, d.location_lng)
+            dist = haversine_distance(lat, lng, d.location_lat, d.location_lng)
+            d.distance_km = dist  # Will be None if donation has no coords
         else:
             d.distance_km = None
             
     if lat and lng:
-        dons.sort(key=lambda x: x.distance_km)
+        # Sort: donations with known distance first (ascending), then unknown
+        dons.sort(key=lambda x: (x.distance_km is None, x.distance_km or 0))
         
     return Response(DonationSerializer(dons, many=True).data)
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { User, Building2, Mail, Lock, UserCircle } from 'lucide-react'
+import { User, Building2, Mail, Lock, UserCircle, Phone } from 'lucide-react'
 import Layout from '../components/Layout'
 import Button from '../components/ui/Button'
 import Toast from '../components/ui/Toast'
@@ -11,10 +11,29 @@ export default function Register() {
   const [role, setRole] = useState('DONOR')
   const [loading, setLoading] = useState(false)
   const [toast, setToast] = useState(null)
-  const [formData, setFormData] = useState({ email: '', password: '', full_name: '' })
+  const [formData, setFormData] = useState({ email: '', password: '', full_name: '', phone_number: '' })
+
+  // Validate 10-digit Indian mobile number
+  const validatePhone = (phone) => {
+    const cleaned = phone.replace(/\s/g, '')
+    return /^[6-9]\d{9}$/.test(cleaned)
+  }
+
+  const handlePhoneChange = (e) => {
+    // Allow only digits, max 10 characters
+    const value = e.target.value.replace(/\D/g, '').slice(0, 10)
+    setFormData({ ...formData, phone_number: value })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    // Phone validation before submit
+    if (!formData.phone_number || !validatePhone(formData.phone_number)) {
+      setToast({ message: 'Please enter a valid 10-digit mobile number (starting with 6-9)', type: 'warning' })
+      return
+    }
+
     setLoading(true)
     try {
       const res = await api.post('/register/', { ...formData, role })
@@ -31,7 +50,8 @@ export default function Register() {
         setTimeout(() => navigate(data.redirect_to_org ? '/org/create' : '/profile'), 1500)
       } else {
         const err = await res.json()
-        setToast({ message: Object.values(err)[0][0] || 'Registration failed', type: 'error' })
+        const firstError = Object.values(err).flat()[0]
+        setToast({ message: firstError || 'Registration failed', type: 'error' })
       }
     } catch {
       setToast({ message: 'Something went wrong', type: 'error' })
@@ -66,6 +86,7 @@ export default function Register() {
               <input type="text" required className="input-field pl-12" placeholder="John Doe" value={formData.full_name} onChange={e => setFormData({ ...formData, full_name: e.target.value })} />
             </div>
           </div>
+
           <div>
             <label className="form-label">Email Address</label>
             <div className="relative">
@@ -73,6 +94,30 @@ export default function Register() {
               <input type="email" required className="input-field pl-12" placeholder="john@example.com" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} />
             </div>
           </div>
+
+          <div>
+            <label className="form-label">Mobile Number</label>
+            <div className="relative">
+              <span className="absolute left-5 top-1/2 -translate-y-1/2 text-text-muted"><Phone size={20} /></span>
+              <span className="absolute left-12 top-1/2 -translate-y-1/2 text-text-secondary font-mono text-sm font-bold">+91</span>
+              <input
+                type="tel"
+                required
+                className="input-field pl-24"
+                placeholder="9876543210"
+                value={formData.phone_number}
+                onChange={handlePhoneChange}
+                maxLength="10"
+                inputMode="numeric"
+              />
+            </div>
+            {formData.phone_number && formData.phone_number.length > 0 && (
+              <p className={`text-xs mt-1 font-body ${validatePhone(formData.phone_number) ? 'text-primary' : 'text-red-500'}`}>
+                {validatePhone(formData.phone_number) ? `+91 ${formData.phone_number} — valid` : `${formData.phone_number.length}/10 digits — must start with 6-9`}
+              </p>
+            )}
+          </div>
+
           <div>
             <label className="form-label">Password</label>
             <div className="relative">
@@ -80,6 +125,7 @@ export default function Register() {
               <input type="password" required className="input-field pl-12" placeholder="••••••••" value={formData.password} onChange={e => setFormData({ ...formData, password: e.target.value })} />
             </div>
           </div>
+
           <Button type="submit" loading={loading} className="w-full">Sign Up as {role}</Button>
         </form>
 
