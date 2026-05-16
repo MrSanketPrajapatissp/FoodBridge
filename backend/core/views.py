@@ -30,7 +30,10 @@ def register(request):
     ser = RegisterSerializer(data=request.data)
     if ser.is_valid():
         user = ser.save()
-        send_verification_email(user)
+        try:
+            send_verification_email(user)
+        except Exception as e:
+            print(f"[WARN] Verification email failed to send for {user.email}: {e}")
         refresh = RefreshToken.for_user(user)
         return Response({
             'access': str(refresh.access_token),
