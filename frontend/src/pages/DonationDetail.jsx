@@ -6,7 +6,7 @@ import Button from '../components/ui/Button'
 import StatusBadge from '../components/ui/StatusBadge'
 import FoodTypeBadge from '../components/ui/FoodTypeBadge'
 import Toast from '../components/ui/Toast'
-import { api } from '../utils/api'
+import { api, BASE } from '../utils/api'
 
 export default function DonationDetail() {
   const { id } = useParams()
@@ -112,7 +112,7 @@ export default function DonationDetail() {
            <div className="space-y-6">
               <div className="card aspect-video relative bg-surface-muted overflow-hidden">
                 {donation.photos && donation.photos.length > 0 ? (
-                    <img src={donation.photos[0].photo.startsWith('http') ? donation.photos[0].photo : `http://localhost:8000${donation.photos[0].photo}`} className="w-full h-full object-cover" />
+                    <img src={donation.photos[0].photo.startsWith('http') ? donation.photos[0].photo : `${BASE.replace('/api', '')}${donation.photos[0].photo}`} className="w-full h-full object-cover" />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center text-text-muted"><UtensilsCrossed size={64} /></div>
                 )}
@@ -122,7 +122,7 @@ export default function DonationDetail() {
               <div className="flex gap-4">
                 {donation.photos?.slice(1).map((p, i) => (
                   <div key={i} className="w-24 h-24 rounded-card overflow-hidden border-2 border-surface-border">
-                    <img src={p.photo.startsWith('http') ? p.photo : `http://localhost:8000${p.photo}`} className="w-full h-full object-cover" />
+                    <img src={p.photo.startsWith('http') ? p.photo : `${BASE.replace('/api', '')}${p.photo}`} className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>

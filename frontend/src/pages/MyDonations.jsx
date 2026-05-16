@@ -6,7 +6,7 @@ import Button from '../components/ui/Button'
 import StatusBadge from '../components/ui/StatusBadge'
 import EmptyState from '../components/ui/EmptyState'
 import Toast from '../components/ui/Toast'
-import { api } from '../utils/api'
+import { api, BASE } from '../utils/api'
 import { timeAgo } from '../utils/timeAgo'
 
 export default function MyDonations() {
@@ -85,7 +85,7 @@ export default function MyDonations() {
                <div key={d.id} className="card p-6 flex flex-col md:flex-row items-center gap-6">
                  <div className="w-full md:w-24 h-24 rounded-card bg-surface-muted overflow-hidden flex-shrink-0">
                     {d.photos && d.photos.length > 0 && (
-                        <img src={d.photos[0].photo.startsWith('http') ? d.photos[0].photo : `http://localhost:8000${d.photos[0].photo}`} className="w-full h-full object-cover" />
+                        <img src={d.photos[0].photo.startsWith('http') ? d.photos[0].photo : `${BASE.replace('/api', '')}${d.photos[0].photo}`} className="w-full h-full object-cover" />
                     )}
                  </div>
                  <div className="flex-1 text-center md:text-left">

@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_URL
+export const BASE = import.meta.env.VITE_API_URL
 const headers = (isForm=false) => {
   const t = localStorage.getItem('access_token')
   const h = {}

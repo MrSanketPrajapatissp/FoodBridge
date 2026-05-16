@@ -37,7 +37,7 @@ def donation_create(request):
         for p in photos:
             DonationPhoto.objects.create(donation=donation, photo=p)
         print(f"[SUCCESS] Donation created: {donation.id}")
-        return Response(DonationSerializer(donation).data)
+        return Response(DonationSerializer(donation, context={'request': request}).data)
     print(f"[ERROR] Donation serializer errors: {ser.errors}")
     return Response(ser.errors, status=400)
 
@@ -72,14 +72,14 @@ def donation_list(request):
         # Sort: donations with known distance first (ascending), then unknown
         dons.sort(key=lambda x: (x.distance_km is None, x.distance_km or 0))
         
-    return Response(DonationSerializer(dons, many=True).data)
+    return Response(DonationSerializer(dons, many=True, context={'request': request}).data)
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def donation_detail(request, pk):
     try:
         d = Donation.objects.get(pk=pk)
-        return Response(DonationSerializer(d).data)
+        return Response(DonationSerializer(d, context={'request': request}).data)
     except Donation.DoesNotExist:
         return Response({'error': 'Not found'}, status=404)
 
@@ -91,7 +91,7 @@ def donation_update(request, pk):
         ser = DonationSerializer(d, data=request.data, partial=True)
         if ser.is_valid():
             ser.save()
-            return Response(ser.data)
+            return Response(DonationSerializer(d, context={'request': request}).data)
         return Response(ser.errors, status=400)
     except Donation.DoesNotExist:
         return Response({'error': 'Not found or not editable'}, status=404)
@@ -111,4 +111,4 @@ def donation_cancel(request, pk):
 @permission_classes([IsAuthenticated])
 def my_donations(request):
     qs = Donation.objects.filter(donor=request.user).order_by('-created_at')
-    return Response(DonationSerializer(qs, many=True).data)
+    return Response(DonationSerializer(qs, many=True, context={'request': request}).data)

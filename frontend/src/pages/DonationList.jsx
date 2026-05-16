@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 import SkeletonCard from '../components/ui/SkeletonCard'
 import EmptyState from '../components/ui/EmptyState'
 import FoodTypeBadge from '../components/ui/FoodTypeBadge'
-import { api } from '../utils/api'
+import { api, BASE } from '../utils/api'
 
 export default function DonationList() {
   const [donations, setDonations] = useState([])
@@ -68,7 +68,7 @@ export default function DonationList() {
               <Link key={d.id} to={`/donations/${d.id}`} className="card group">
                 <div className="aspect-video overflow-hidden relative bg-surface-muted">
                     {d.photos && d.photos.length > 0 ? (
-                        <img src={d.photos[0].photo.startsWith('http') ? d.photos[0].photo : `http://localhost:8000${d.photos[0].photo}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <img src={d.photos[0].photo.startsWith('http') ? d.photos[0].photo : `${BASE.replace('/api', '')}${d.photos[0].photo}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-text-muted"><UtensilsCrossed size={40} /></div>
                     )}
