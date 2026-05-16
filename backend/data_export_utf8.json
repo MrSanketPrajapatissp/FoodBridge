@@ -1,0 +1,2116 @@
+[
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$NAKmyAahx8TEQUHrSBeVp8$9Pt+ce9ZDBPtaF87d8MnVbxFsmkAeGe6mHdyuhGFRUg=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "ngoa@example.com",
+      "full_name": "NGO Alice",
+      "phone_number": "",
+      "role": "NGO",
+      "is_email_verified": true,
+      "email_verification_token": "-Cjb9s_TaBUU7dYb6d9aGWTxMo5wJ_Jv79B7o7UmV20",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-19T16:13:46.609Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$URRFHYUf1Xmc5EcyKxgwOa$Ic0Cw5Ho4t/HWzkfuO6Tybuc2aLJjenJXNfez76bFEM=",
+      "last_login": "2026-04-19T16:25:15.090Z",
+      "is_superuser": true,
+      "email": "admin@foodbridge.com",
+      "full_name": "System Admin",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": false,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": true,
+      "created_at": "2026-04-19T16:21:10.280Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$L5NG3Z0xv9vCl5yj0bYZzb$OI8zsrxTcMrdWaoBAFeWYDn/kHzV1fgYpvgzulV/9X8=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "ngoa@gmail.com",
+      "full_name": "Ngo A",
+      "phone_number": "",
+      "role": "NGO",
+      "is_email_verified": false,
+      "email_verification_token": "1vGWZ8fJmpeAW8zKCmFMVUEQatFf6N8HHq8NYaXY2MQ",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-21T14:54:08.741Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$uySbCzpI47btXWPBkVPdp5$JofvV6pKRXi05VO6NFNc5WTxITQky0qsgwnF77BxRyU=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "donorpersona@gmail.com",
+      "full_name": "donorperson a",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": false,
+      "email_verification_token": "mZW4sj9bdGAS_L1nv-OpV7qyJuaN4Ew4rBQEaH0-qTg",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-21T14:59:50.263Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$yqGmYbuLecVJd343GLEqQA$O06Bde0CxezYOzMUn4Ak7TW4nsSvVC5JyLXG4GvDYYc=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "sanket@gmail.com",
+      "full_name": "Sanket Prajapati",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": false,
+      "email_verification_token": "BfTYAk40nc3IFPzzrM58u0mHWo62hrAbBBt3MqsDGm4",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-21T15:15:50.522Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$givwhWQTFD8UtIlvPJHXbZ$7Uz5zb+v2FZ2RdYVDH66VwqhpsgxAXGPrsBQAQ7KqZY=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "sanketprajapatipdp@gmail.com",
+      "full_name": "Sanket NGO",
+      "phone_number": "",
+      "role": "NGO",
+      "is_email_verified": false,
+      "email_verification_token": "v4A_Tlufd0dCtSr40bWw4ho1mCoZExOQd8kzzihWDrk",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-23T01:44:46.404Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$79cBVo3EOsJPZrIfhfU63v$fpu5noI7vhRfAwpvdPc1qIV6tVHc1WujKxBu15LmqQk=",
+      "last_login": "2026-04-25T14:04:46.339Z",
+      "is_superuser": true,
+      "email": "singhroshan2497@gmail.com",
+      "full_name": "Roshan Singh",
+      "phone_number": "",
+      "role": "ADMIN",
+      "is_email_verified": false,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": true,
+      "created_at": "2026-04-25T06:56:23.802Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "prajapatisanketpdp@gmail.com",
+      "full_name": "NGO",
+      "phone_number": "",
+      "role": "NGO",
+      "is_email_verified": false,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-25T07:55:51.336Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$SOo9hhLAEObBPf3PpScohw$Qvi5fKMLv9FcU5not8/GvZhtBRSRd2BBql74VsS71kA=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "admin_m4@test.com",
+      "full_name": "Admin",
+      "phone_number": "",
+      "role": "ADMIN",
+      "is_email_verified": false,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-25T07:55:51.515Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$K5MGAt8vnXKXDpKMpTeG8z$Y7XJ2hpcF2aw6VJ0VlqW3uJCY7WYSL+9rvMWhJWmc44=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "archanaprajapatissp321@gmail.com",
+      "full_name": "Ar P",
+      "phone_number": "8421927904",
+      "role": "DONOR",
+      "is_email_verified": true,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-25T14:07:00.577Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$5zpsqbS2KYy3xWmJ6tLDbx$vVD/8yJyC0HQ6ewBPUCfhMyybCCANpGAmcJsO/2HK18=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "testjoh@gmail.com",
+      "full_name": "joh",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": false,
+      "email_verification_token": "pLg6hnyyRu_DNItBzMMUtaPr08AZc97hz6Torjg2VcE",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-25T14:27:36.149Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$okli0Uw0BwmYMTSY0KBmt9$ksg1NU1CxHGzK09/a9Sq+iItYy4b81XGvGgPicOy2Q0=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "sanjayprajapati27ssp@gmail.com",
+      "full_name": "Sanjay Ngo food claimer",
+      "phone_number": "",
+      "role": "NGO",
+      "is_email_verified": true,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-25T14:35:29.806Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$SJvYrq7VIYySYXbzqfkPmj$8zEOA6HjpJ092MLABA6kTHD31OSGj+JWjY4ltx284s8=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "prajapatisanket842@gmail.com",
+      "full_name": "Sanket Prajapati",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": true,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-25T15:37:24.994Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$oL2omSHpwDze5DmgqkXGAZ$rL057dZViBuxloJKj/Se2Sgeo09GotZZKEuBRn3nVIE=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "ramdonor@gmail.com",
+      "full_name": "Ram is Donor",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": false,
+      "email_verification_token": "UhVd69mhs3A83wLqPczQFLYUC5PzfTRetShL-BHKsIE",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-25T16:05:58.961Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$FhLlohkgrxg1yOfuweBGJP$0AdtAOG1iStFvroM5ruwTyDAXIaiAuA5sqqD16k9rjg=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "shyamngo@gmail.com",
+      "full_name": "shyam is Ngo",
+      "phone_number": "8180935924",
+      "role": "NGO",
+      "is_email_verified": true,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-25T16:10:56.168Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$3K79RFsjo6BNb1QwAOdQw1$IlZoMcYaaqAEikmAFA/T+v479V57rMxXQD4hQGIC5yE=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "testdonor@gmail.com",
+      "full_name": "Test Donor",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": false,
+      "email_verification_token": "toPVNS8utB4jN8PG3NdOrhIr6sY2ijgG2smpe4cRKvI",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-25T17:15:43.343Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$nBUdPMwL7JSpeHopHKDYoA$1jd5gAuK+HOOUo9p2UJ19D29aRXFsSzY/VCAvNCAzyo=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "foodbridge.connect.admin@gmail.com",
+      "full_name": "foodbridge.connect.admin@gmail.com",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": false,
+      "email_verification_token": "fX8VQ-GvT1bV-kIKGUS47S_08RfnLTB4evXRbISa0w8",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-26T09:30:23.292Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$uXQa9vd5OqRjDGwL99aRvh$1L3xWSLFlejjQOtaqX7NRudJbbyMzeu6CCRXiwG527w=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "foodbridge.admin.connect@gmail.com",
+      "full_name": "foodbridge.admin.connect@gmail.com",
+      "phone_number": "",
+      "role": "ADMIN",
+      "is_email_verified": false,
+      "email_verification_token": "7BlEVrFFNCdWAwCRwveXy51CttwnEhT1g136GeBDZRY",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-26T09:32:10.881Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$OVIcyFdsQ2qG3SdQn97MoL$jMsWD0H7S6Vf8TBVgSXqrfecwlyQjylo1wXbYhMXdSo=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "sanketprajapati.connect@gmail.com",
+      "full_name": "Donor Sanket",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": true,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-26T09:40:35.399Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$7je7lhYzEZuLdKL8uWoGjb$GKT2ItswuE/g0HOVE+0eCKdzx/8OpLkLGXw6B7OyzOQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "sanjayprajapati61271@gmail.com",
+      "full_name": "food Claimer Sanket",
+      "phone_number": "",
+      "role": "NGO",
+      "is_email_verified": false,
+      "email_verification_token": "Dxtpp_2qGMUJI_nMJXtktUim57AohcmBsHhqZGtDsgg",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-26T09:46:00.639Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$mv1CTBklRU80EKGFzTq37Z$hNLOZMSDb5gjg43SjaLdgPnav73LTK99OAxf6fe/fuU=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "registertest@gmail.com",
+      "full_name": "Registration test",
+      "phone_number": "",
+      "role": "DONOR",
+      "is_email_verified": false,
+      "email_verification_token": "qG-__VcdD4bH8uNEVMgXKJh_HrL3lbqQFwIh2nNiakg",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-26T10:17:36.793Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$GObnoBux6vnyvhcAsJ5BvV$XfVdVIyGypC89kth7CbxQH8FapnRel1T4GJdXiQc3W0=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "sanketprajapati2005@gmail.com",
+      "full_name": "Sanket Prajapati",
+      "phone_number": "8756551555",
+      "role": "DONOR",
+      "is_email_verified": false,
+      "email_verification_token": "OTYUJzPSczOqISE33Yc48n8JsTXR4CnEO0KOHtfYX_4",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-26T10:36:10.553Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.user",
+    "fields": {
+      "password": "pbkdf2_sha256$720000$9mVfiacfX94DE2yvwZzgeT$a8pSnzVtq3/0/ugGNYGIjegqSa0GKnXxOGNdZdAePC8=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "prajapatisanketssp321@gmail.com",
+      "full_name": "Sanket Prajapati NGO Claimer",
+      "phone_number": "8421927904",
+      "role": "NGO",
+      "is_email_verified": true,
+      "email_verification_token": "",
+      "is_active": true,
+      "is_staff": false,
+      "created_at": "2026-04-26T11:01:56.896Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "core.organization",
+    "pk": 1,
+    "fields": {
+      "user": [
+        "ngoa@example.com"
+      ],
+      "organization_name": "NGO Alice",
+      "registration_number": "NGO-999",
+      "address": "123 Street",
+      "city": "TestCity",
+      "state": "TestState",
+      "location_lat": "21.154541",
+      "location_lng": "77.644296",
+      "service_radius_km": 10,
+      "verification_status": "VERIFIED",
+      "rejection_reason": "",
+      "created_at": "2026-04-19T14:59:47.853Z"
+    }
+  },
+  {
+    "model": "core.organization",
+    "pk": 2,
+    "fields": {
+      "user": [
+        "ngoa@gmail.com"
+      ],
+      "organization_name": "Ngo A",
+      "registration_number": "NGO-1798",
+      "address": "Samarth Wadi Nagpur",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "location_lat": "20.894870",
+      "location_lng": "77.740868",
+      "service_radius_km": 20,
+      "verification_status": "VERIFIED",
+      "rejection_reason": null,
+      "created_at": "2026-04-21T14:57:37.801Z"
+    }
+  },
+  {
+    "model": "core.organization",
+    "pk": 3,
+    "fields": {
+      "user": [
+        "sanketprajapatipdp@gmail.com"
+      ],
+      "organization_name": "Sanket Welfare Trust",
+      "registration_number": "REG-SKT-2024",
+      "address": "45 Relief Road, Ahmedabad",
+      "city": "Ahmedabad",
+      "state": "Gujarat",
+      "location_lat": "23.022500",
+      "location_lng": "72.571400",
+      "service_radius_km": 10,
+      "verification_status": "VERIFIED",
+      "rejection_reason": null,
+      "created_at": "2026-04-23T01:45:50.513Z"
+    }
+  },
+  {
+    "model": "core.organization",
+    "pk": 6,
+    "fields": {
+      "user": [
+        "sanjayprajapati27ssp@gmail.com"
+      ],
+      "organization_name": "Sanjay Trust Welfare",
+      "registration_number": "Ngo-123-43",
+      "address": "Sainagar, Amravati",
+      "city": "Amravati",
+      "state": "Maharashtra",
+      "location_lat": "20.894564",
+      "location_lng": "77.740919",
+      "service_radius_km": 10,
+      "verification_status": "VERIFIED",
+      "rejection_reason": null,
+      "created_at": "2026-04-25T14:36:50.433Z"
+    }
+  },
+  {
+    "model": "core.organization",
+    "pk": 7,
+    "fields": {
+      "user": [
+        "shyamngo@gmail.com"
+      ],
+      "organization_name": "Shayam Trust NGO Claimer",
+      "registration_number": "NGO-24422",
+      "address": "Sainagar, Amravati",
+      "city": "Amravati",
+      "state": "Maharashtra",
+      "location_lat": "20.894814",
+      "location_lng": "77.740990",
+      "service_radius_km": 10,
+      "verification_status": "VERIFIED",
+      "rejection_reason": null,
+      "created_at": "2026-04-25T16:11:47.642Z"
+    }
+  },
+  {
+    "model": "core.organization",
+    "pk": 10,
+    "fields": {
+      "user": [
+        "sanjayprajapati61271@gmail.com"
+      ],
+      "organization_name": "Ngo Food Claimer",
+      "registration_number": "NGO-2345",
+      "address": "Prafull colony, Akoli Road, Sainagar, Amravati",
+      "city": "Amravati",
+      "state": "Maharashtra",
+      "location_lat": "20.894814",
+      "location_lng": "77.740990",
+      "service_radius_km": 33,
+      "verification_status": "VERIFIED",
+      "rejection_reason": null,
+      "created_at": "2026-04-26T09:47:07.283Z"
+    }
+  },
+  {
+    "model": "core.organization",
+    "pk": 12,
+    "fields": {
+      "user": [
+        "prajapatisanketssp321@gmail.com"
+      ],
+      "organization_name": "Sanket Welfare Trust",
+      "registration_number": "NGO - 12443",
+      "address": "Rajapeth, Deorankar Nagar, Amravati, Maharashtra, 444600, India",
+      "city": "Amravati",
+      "state": "Maharashtra",
+      "location_lat": "20.894814",
+      "location_lng": "77.740990",
+      "service_radius_km": 29,
+      "verification_status": "VERIFIED",
+      "rejection_reason": null,
+      "created_at": "2026-04-26T11:03:18.283Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 9,
+    "fields": {
+      "recipient": [
+        "sanjayprajapati27ssp@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO has been verified.",
+      "is_read": true,
+      "created_at": "2026-04-25T15:17:49.888Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 10,
+    "fields": {
+      "recipient": [
+        "sanjayprajapati27ssp@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO has been verified.",
+      "is_read": true,
+      "created_at": "2026-04-25T15:17:51.626Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 11,
+    "fields": {
+      "recipient": [
+        "sanjayprajapati27ssp@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO has been verified.",
+      "is_read": true,
+      "created_at": "2026-04-25T15:17:52.753Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 12,
+    "fields": {
+      "recipient": [
+        "sanjayprajapati27ssp@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO has been verified.",
+      "is_read": true,
+      "created_at": "2026-04-25T15:17:53.878Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 13,
+    "fields": {
+      "recipient": [
+        "sanjayprajapati27ssp@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO has been verified.",
+      "is_read": true,
+      "created_at": "2026-04-25T15:17:54.492Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 14,
+    "fields": {
+      "recipient": [
+        "testjoh@gmail.com"
+      ],
+      "related_donation_id": 15,
+      "notification_type": "DONATION_CLAIMED",
+      "title": "Donation Claimed",
+      "message": "Your donation Veg Thali has been claimed by Sanjay Trust Welfare.",
+      "is_read": false,
+      "created_at": "2026-04-25T15:42:45.649Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 15,
+    "fields": {
+      "recipient": [
+        "prajapatisanket842@gmail.com"
+      ],
+      "related_donation_id": 16,
+      "notification_type": "DONATION_CLAIMED",
+      "title": "Donation Claimed",
+      "message": "Your donation veg Biryani has been claimed by Sanket Welfare Trust.",
+      "is_read": false,
+      "created_at": "2026-04-25T16:04:11.617Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 16,
+    "fields": {
+      "recipient": [
+        "shyamngo@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO has been verified.",
+      "is_read": false,
+      "created_at": "2026-04-25T16:18:45.444Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 17,
+    "fields": {
+      "recipient": [
+        "shyamngo@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO has been verified.",
+      "is_read": false,
+      "created_at": "2026-04-25T16:18:48.877Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 18,
+    "fields": {
+      "recipient": [
+        "testjoh@gmail.com"
+      ],
+      "related_donation_id": 15,
+      "notification_type": "HOLD_EXPIRED",
+      "title": "Claim Expired — Food Available Again",
+      "message": "The claim on \"Veg Thali\" by Sanjay Trust Welfare expired (no pickup within 45 min). Your donation is available again.",
+      "is_read": false,
+      "created_at": "2026-04-25T16:31:02.017Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 19,
+    "fields": {
+      "recipient": [
+        "sanjayprajapati27ssp@gmail.com"
+      ],
+      "related_donation_id": 15,
+      "notification_type": "HOLD_EXPIRED",
+      "title": "Your Claim Has Expired",
+      "message": "Your claim on \"Veg Thali\" has expired because pickup was not completed within 45 minutes.",
+      "is_read": true,
+      "created_at": "2026-04-25T16:31:02.112Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 20,
+    "fields": {
+      "recipient": [
+        "archanaprajapatissp321@gmail.com"
+      ],
+      "related_donation_id": 18,
+      "notification_type": "DONATION_CLAIMED",
+      "title": "Donation Claimed",
+      "message": "Your donation Puri and sabji has been claimed by Shayam Trust NGO Claimer.",
+      "is_read": true,
+      "created_at": "2026-04-25T16:35:36.627Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 21,
+    "fields": {
+      "recipient": [
+        "archanaprajapatissp321@gmail.com"
+      ],
+      "related_donation_id": 18,
+      "notification_type": "PICKUP_COMPLETE",
+      "title": "Pickup Complete",
+      "message": "The pickup for Puri and sabji was completed successfully.",
+      "is_read": true,
+      "created_at": "2026-04-25T16:38:43.455Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 22,
+    "fields": {
+      "recipient": [
+        "prajapatisanket842@gmail.com"
+      ],
+      "related_donation_id": 16,
+      "notification_type": "HOLD_EXPIRED",
+      "title": "Claim Expired — Food Available Again",
+      "message": "The claim on \"veg Biryani\" by Sanket Welfare Trust expired (no pickup within 45 min). Your donation is available again.",
+      "is_read": false,
+      "created_at": "2026-04-25T16:55:11.829Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 23,
+    "fields": {
+      "recipient": [
+        "sanketprajapatipdp@gmail.com"
+      ],
+      "related_donation_id": 16,
+      "notification_type": "HOLD_EXPIRED",
+      "title": "Your Claim Has Expired",
+      "message": "Your claim on \"veg Biryani\" has expired because pickup was not completed within 45 minutes.",
+      "is_read": true,
+      "created_at": "2026-04-25T16:55:11.911Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 24,
+    "fields": {
+      "recipient": [
+        "testdonor@gmail.com"
+      ],
+      "related_donation_id": 22,
+      "notification_type": "DONATION_CLAIMED",
+      "title": "Donation Claimed",
+      "message": "Your donation Fresh Roti has been claimed by Sanjay Trust Welfare.",
+      "is_read": true,
+      "created_at": "2026-04-25T17:25:16.215Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 25,
+    "fields": {
+      "recipient": [
+        "testdonor@gmail.com"
+      ],
+      "related_donation_id": 22,
+      "notification_type": "PICKUP_COMPLETE",
+      "title": "Pickup Complete",
+      "message": "The pickup for Fresh Roti was completed successfully.",
+      "is_read": true,
+      "created_at": "2026-04-25T17:30:19.375Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 26,
+    "fields": {
+      "recipient": [
+        "testdonor@gmail.com"
+      ],
+      "related_donation_id": 22,
+      "notification_type": "PICKUP_COMPLETE",
+      "title": "Pickup Complete",
+      "message": "The pickup for Fresh Roti was completed successfully.",
+      "is_read": true,
+      "created_at": "2026-04-25T17:30:24.663Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 27,
+    "fields": {
+      "recipient": [
+        "testjoh@gmail.com"
+      ],
+      "related_donation_id": 15,
+      "notification_type": "DONATION_CLAIMED",
+      "title": "Donation Claimed",
+      "message": "Your donation Veg Thali has been claimed by NGO Alice.",
+      "is_read": false,
+      "created_at": "2026-04-25T17:36:57.865Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 28,
+    "fields": {
+      "recipient": [
+        "testjoh@gmail.com"
+      ],
+      "related_donation_id": 15,
+      "notification_type": "HOLD_EXPIRED",
+      "title": "Claim Expired — Food Available Again",
+      "message": "The claim on \"Veg Thali\" by NGO Alice expired (no pickup within 45 min). Your donation is available again.",
+      "is_read": false,
+      "created_at": "2026-04-26T09:17:51.347Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 29,
+    "fields": {
+      "recipient": [
+        "ngoa@example.com"
+      ],
+      "related_donation_id": 15,
+      "notification_type": "HOLD_EXPIRED",
+      "title": "Your Claim Has Expired",
+      "message": "Your claim on \"Veg Thali\" has expired because pickup was not completed within 45 minutes.",
+      "is_read": false,
+      "created_at": "2026-04-26T09:17:51.470Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 30,
+    "fields": {
+      "recipient": [
+        "sanjayprajapati61271@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO has been verified.",
+      "is_read": true,
+      "created_at": "2026-04-26T09:49:10.007Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 31,
+    "fields": {
+      "recipient": [
+        "sanjayprajapati61271@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO has been verified.",
+      "is_read": true,
+      "created_at": "2026-04-26T09:49:11.393Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 32,
+    "fields": {
+      "recipient": [
+        "sanketprajapati.connect@gmail.com"
+      ],
+      "related_donation_id": 23,
+      "notification_type": "DONATION_CLAIMED",
+      "title": "Donation Claimed",
+      "message": "Your donation Fresh Veg Pulav has been claimed by Ngo Food Claimer.",
+      "is_read": true,
+      "created_at": "2026-04-26T09:50:54.596Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 33,
+    "fields": {
+      "recipient": [
+        "sanketprajapati.connect@gmail.com"
+      ],
+      "related_donation_id": 23,
+      "notification_type": "PICKUP_COMPLETE",
+      "title": "Pickup Complete",
+      "message": "The pickup for Fresh Veg Pulav was completed successfully.",
+      "is_read": true,
+      "created_at": "2026-04-26T09:55:42.947Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 34,
+    "fields": {
+      "recipient": [
+        "sanketprajapati.connect@gmail.com"
+      ],
+      "related_donation_id": 24,
+      "notification_type": "DONATION_CLAIMED",
+      "title": "Donation Claimed",
+      "message": "Your donation Veg Thali has been claimed by Ngo Food Claimer.",
+      "is_read": true,
+      "created_at": "2026-04-26T10:11:07.550Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 37,
+    "fields": {
+      "recipient": [
+        "sanketprajapati.connect@gmail.com"
+      ],
+      "related_donation_id": 24,
+      "notification_type": "HOLD_EXPIRED",
+      "title": "Claim Expired — Food Available Again",
+      "message": "The claim on \"Veg Thali\" by Ngo Food Claimer expired (no pickup within 45 min). Your donation is available again.",
+      "is_read": true,
+      "created_at": "2026-04-26T10:58:46.956Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 38,
+    "fields": {
+      "recipient": [
+        "sanjayprajapati61271@gmail.com"
+      ],
+      "related_donation_id": 24,
+      "notification_type": "HOLD_EXPIRED",
+      "title": "Your Claim Has Expired",
+      "message": "Your claim on \"Veg Thali\" has expired because pickup was not completed within 45 minutes.",
+      "is_read": false,
+      "created_at": "2026-04-26T10:58:47.321Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 39,
+    "fields": {
+      "recipient": [
+        "prajapatisanketssp321@gmail.com"
+      ],
+      "related_donation_id": null,
+      "notification_type": "NGO_VERIFIED",
+      "title": "Organization Verified",
+      "message": "Your NGO \"Sanket Welfare Trust\" has been automatically verified. You can now claim food donations!",
+      "is_read": true,
+      "created_at": "2026-04-26T11:03:48.715Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 40,
+    "fields": {
+      "recipient": [
+        "sanketprajapati2005@gmail.com"
+      ],
+      "related_donation_id": 25,
+      "notification_type": "DONATION_CLAIMED",
+      "title": "Donation Claimed",
+      "message": "Your donation \"Bread  Sandwitch\" has been claimed by Sanket Welfare Trust. Contact: 8421927904 | prajapatisanketssp321@gmail.com",
+      "is_read": true,
+      "created_at": "2026-04-26T11:04:46.272Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 41,
+    "fields": {
+      "recipient": [
+        "sanketprajapati2005@gmail.com"
+      ],
+      "related_donation_id": 25,
+      "notification_type": "PICKUP_COMPLETE",
+      "title": "Pickup Complete",
+      "message": "The pickup for Bread  Sandwitch was completed successfully.",
+      "is_read": true,
+      "created_at": "2026-04-26T11:07:52.788Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 42,
+    "fields": {
+      "recipient": [
+        "sanketprajapati.connect@gmail.com"
+      ],
+      "related_donation_id": 24,
+      "notification_type": "DONATION_CLAIMED",
+      "title": "Donation Claimed",
+      "message": "Your donation \"Veg Thali\" has been claimed by Shayam Trust NGO Claimer. Contact: 8180935924 | shyamngo@gmail.com",
+      "is_read": true,
+      "created_at": "2026-04-26T11:12:35.564Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 43,
+    "fields": {
+      "recipient": [
+        "sanketprajapati.connect@gmail.com"
+      ],
+      "related_donation_id": 24,
+      "notification_type": "PICKUP_COMPLETE",
+      "title": "Pickup Complete",
+      "message": "The pickup for Veg Thali was completed successfully.",
+      "is_read": true,
+      "created_at": "2026-04-26T11:21:56.330Z"
+    }
+  },
+  {
+    "model": "core.notification",
+    "pk": 44,
+    "fields": {
+      "recipient": [
+        "sanketprajapati.connect@gmail.com"
+      ],
+      "related_donation_id": 24,
+      "notification_type": "PICKUP_COMPLETE",
+      "title": "Pickup Complete",
+      "message": "The pickup for Veg Thali was completed successfully.",
+      "is_read": true,
+      "created_at": "2026-04-26T11:22:00.170Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 1,
+    "fields": {
+      "recipient_email": "testngo1@foodbridge.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Test NGO User,\n\nVerify here:\nhttp://localhost:5173/verify-email?token=0Kvc-KqlmddXzbJ3YLMxTGtfeFdAvUaZxGNh0ot9Jsk\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d9443c01a7336-2b5fab3ac1fsm271412095ad.70 - gsmtp')",
+      "sent_at": "2026-04-25T12:03:30.005Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 2,
+    "fields": {
+      "recipient_email": "sanketprajapatipdp@gmail.com",
+      "subject": "Donation Claimed - Your OTP",
+      "body": "You have claimed Vegetable Biryani. Show this OTP to the donor for pickup: 259938",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 41be03b00d2f7-c797704c332sm20007262a12.30 - gsmtp')",
+      "sent_at": "2026-04-25T12:25:00.460Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 3,
+    "fields": {
+      "recipient_email": "prajapatisanketssp321@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Sanket Welfare Trust has successfully picked up your donation: Vegetable Biryani. Thank you for your contribution!",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d9443c01a7336-2b5faa2f129sm235820685ad.29 - gsmtp')",
+      "sent_at": "2026-04-25T12:27:23.154Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 4,
+    "fields": {
+      "recipient_email": "prajapatisanketssp321@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Sanket Welfare Trust has successfully picked up your donation: Vegetable Biryani. Thank you for your contribution!",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 98e67ed59e1d1-3614195a9f0sm25881845a91.9 - gsmtp')",
+      "sent_at": "2026-04-25T12:27:23.633Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 5,
+    "fields": {
+      "recipient_email": "prajapatisanket842@gmail.com",
+      "subject": "Donation Claimed - Your OTP",
+      "body": "You have claimed Dosa. Show this OTP to the donor for pickup: 151569",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d2e1a72fcca58-82f8ea09914sm25980974b3a.26 - gsmtp')",
+      "sent_at": "2026-04-25T12:39:12.262Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 6,
+    "fields": {
+      "recipient_email": "prajapatisanketssp321@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Gajanan Welfare Trust has successfully picked up your donation: Dosa. Thank you for your contribution!",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 98e67ed59e1d1-36140fc5d94sm34111176a91.2 - gsmtp')",
+      "sent_at": "2026-04-25T12:40:14.604Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 7,
+    "fields": {
+      "recipient_email": "testngo1@foodbridge.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi Test NGO User,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d9443c01a7336-2b5fab0c17esm252308235ad.41 - gsmtp')",
+      "sent_at": "2026-04-25T13:06:28.013Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 8,
+    "fields": {
+      "recipient_email": "testngo1@foodbridge.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi Test NGO User,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d2e1a72fcca58-82f8ea09914sm26045915b3a.26 - gsmtp')",
+      "sent_at": "2026-04-25T13:06:29.704Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 9,
+    "fields": {
+      "recipient_email": "testngo1@foodbridge.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi Test NGO User,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 98e67ed59e1d1-361410bafa9sm26491111a91.15 - gsmtp')",
+      "sent_at": "2026-04-25T13:06:30.309Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 10,
+    "fields": {
+      "recipient_email": "sanjayprajapati27ssp@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi sanjay prajapati donor,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=syPUag1lgOYRbT7eB6ddpeDBuOoJOmbK7Xy4sq7CQBs\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d2e1a72fcca58-82f8ebb3f8asm27613078b3a.36 - gsmtp')",
+      "sent_at": "2026-04-25T13:10:33.290Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 11,
+    "fields": {
+      "recipient_email": "archanaprajapatissp321@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Priti Za,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=hpeMLxUEY38Au8tSvKLC5vLRemeUOjF-IjJeI9JDxvI\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "FAILED",
+      "error_message": "(534, b'5.7.9 Application-specific password required. For more information, go to\\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 98e67ed59e1d1-3613fbd510dsm9485038a91.13 - gsmtp')",
+      "sent_at": "2026-04-25T13:51:55.725Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 12,
+    "fields": {
+      "recipient_email": "archanaprajapatissp321@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Ar P,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=YA_oWqszKPc062GLQw3SKHCCYxfk5i1Ph635TpzAO9o\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T14:07:08.117Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 13,
+    "fields": {
+      "recipient_email": "testjoh@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi joh,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=pLg6hnyyRu_DNItBzMMUtaPr08AZc97hz6Torjg2VcE\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T14:27:41.785Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 14,
+    "fields": {
+      "recipient_email": "sanjayprajapati27ssp@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Sanjay Ngo food claimer,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=COKXA5fTBFucYpRK-R0EYRR5F7t05Mc4tl1tZwQzH3w\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T14:35:36.033Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 15,
+    "fields": {
+      "recipient_email": "sanjayprajapati27ssp@gmail.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi Sanjay Ngo food claimer,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T15:17:49.716Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 16,
+    "fields": {
+      "recipient_email": "sanjayprajapati27ssp@gmail.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi Sanjay Ngo food claimer,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T15:17:51.456Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 17,
+    "fields": {
+      "recipient_email": "sanjayprajapati27ssp@gmail.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi Sanjay Ngo food claimer,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T15:17:52.583Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 18,
+    "fields": {
+      "recipient_email": "sanjayprajapati27ssp@gmail.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi Sanjay Ngo food claimer,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T15:17:53.710Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 19,
+    "fields": {
+      "recipient_email": "sanjayprajapati27ssp@gmail.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi Sanjay Ngo food claimer,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T15:17:54.324Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 20,
+    "fields": {
+      "recipient_email": "prajapatisanket842@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Sanket Prajapati,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=81-q3_gKaMHakkfHkoNFkQdZWaJ8dKEtQBnUGWUWk-I\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T15:37:31.291Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 21,
+    "fields": {
+      "recipient_email": "sanjayprajapati27ssp@gmail.com",
+      "subject": "Donation Claimed - Your OTP",
+      "body": "You have claimed Veg Thali. Show this OTP to the donor for pickup: 697581",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T15:42:50.000Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 22,
+    "fields": {
+      "recipient_email": "sanketprajapatipdp@gmail.com",
+      "subject": "Donation Claimed - Your OTP",
+      "body": "You have claimed veg Biryani. Show this OTP to the donor for pickup: 038095",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T16:04:16.393Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 23,
+    "fields": {
+      "recipient_email": "ramdonor@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Ram is Donor,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=UhVd69mhs3A83wLqPczQFLYUC5PzfTRetShL-BHKsIE\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T16:06:03.471Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 24,
+    "fields": {
+      "recipient_email": "shyamdonor@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Shyam is NGO,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=LO-6yjqydAu7TlsgLAabQp8Lq745Hfst66c0oY0yYc8\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T16:07:04.811Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 25,
+    "fields": {
+      "recipient_email": "shyamngo@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi shyam is Ngo,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=xsvm_D5ny485QPj_YzDGqEIKAk3F2tzzCt7aAMJbBHs\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T16:11:02.042Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 26,
+    "fields": {
+      "recipient_email": "shyamngo@gmail.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi shyam is Ngo,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T16:18:45.223Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 27,
+    "fields": {
+      "recipient_email": "shyamngo@gmail.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi shyam is Ngo,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T16:18:48.706Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 28,
+    "fields": {
+      "recipient_email": "shyamngo@gmail.com",
+      "subject": "Donation Claimed - Your OTP",
+      "body": "You have claimed Puri and sabji. Show this OTP to the donor for pickup: 886562",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T16:35:42.354Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 29,
+    "fields": {
+      "recipient_email": "archanaprajapatissp321@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Shayam Trust NGO Claimer has successfully picked up your donation: Puri and sabji. Thank you for your contribution!",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T16:38:48.378Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 30,
+    "fields": {
+      "recipient_email": "testdonor@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Test Donor,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=toPVNS8utB4jN8PG3NdOrhIr6sY2ijgG2smpe4cRKvI\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T17:15:55.706Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 31,
+    "fields": {
+      "recipient_email": "sanjayprajapati27ssp@gmail.com",
+      "subject": "Donation Claimed - Your OTP",
+      "body": "You have claimed Fresh Roti. Show this OTP to the donor for pickup: 337457",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T17:25:24.077Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 32,
+    "fields": {
+      "recipient_email": "testdonor@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Sanjay Trust Welfare has successfully picked up your donation: Fresh Roti. Thank you for your contribution!",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T17:30:24.359Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 33,
+    "fields": {
+      "recipient_email": "testdonor@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Sanjay Trust Welfare has successfully picked up your donation: Fresh Roti. Thank you for your contribution!",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T17:30:29.663Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 34,
+    "fields": {
+      "recipient_email": "ngoa@example.com",
+      "subject": "Donation Claimed - Your OTP",
+      "body": "You have claimed Veg Thali. Show this OTP to the donor for pickup: 267427",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-25T17:37:02.775Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 35,
+    "fields": {
+      "recipient_email": "foodbridge.connect.admin@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi foodbridge.connect.admin@gmail.com,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=fX8VQ-GvT1bV-kIKGUS47S_08RfnLTB4evXRbISa0w8\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T09:30:30.223Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 36,
+    "fields": {
+      "recipient_email": "foodbridge.admin.connect@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi foodbridge.admin.connect@gmail.com,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=7BlEVrFFNCdWAwCRwveXy51CttwnEhT1g136GeBDZRY\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T09:32:15.985Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 37,
+    "fields": {
+      "recipient_email": "sanketprajapati.connect@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Donor Sanket,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=6GHMIRKOQeMT2nxTHSpcpMhFoSFs5_m_7Furi15kMcI\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T09:40:41.588Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 38,
+    "fields": {
+      "recipient_email": "sanjayprajapati61271@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi food Claimer Sanket,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=Dxtpp_2qGMUJI_nMJXtktUim57AohcmBsHhqZGtDsgg\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T09:46:05.761Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 39,
+    "fields": {
+      "recipient_email": "sanjayprajapati61271@gmail.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi food Claimer Sanket,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T09:49:09.828Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 40,
+    "fields": {
+      "recipient_email": "sanjayprajapati61271@gmail.com",
+      "subject": "FoodBridge NGO Account Verified",
+      "body": "Hi food Claimer Sanket,\n\nYour NGO account has been verified. You can now claim donations on FoodBridge.",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T09:49:11.215Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 41,
+    "fields": {
+      "recipient_email": "sanjayprajapati61271@gmail.com",
+      "subject": "Donation Claimed - Your OTP",
+      "body": "You have claimed Fresh Veg Pulav. Show this OTP to the donor for pickup: 950188",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T09:50:59.851Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 42,
+    "fields": {
+      "recipient_email": "sanketprajapati.connect@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Ngo Food Claimer has successfully picked up your donation: Fresh Veg Pulav. Thank you for your contribution!",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T09:55:48.654Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 43,
+    "fields": {
+      "recipient_email": "sanjayprajapati61271@gmail.com",
+      "subject": "Donation Claimed - Your OTP",
+      "body": "You have claimed Veg Thali. Show this OTP to the donor for pickup: 667984",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T10:11:13.881Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 44,
+    "fields": {
+      "recipient_email": "registertest@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Registration test,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=qG-__VcdD4bH8uNEVMgXKJh_HrL3lbqQFwIh2nNiakg\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T10:17:43.255Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 45,
+    "fields": {
+      "recipient_email": "sanketprajapati2005@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Sanket Prajapati,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=OTYUJzPSczOqISE33Yc48n8JsTXR4CnEO0KOHtfYX_4\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T10:36:23.820Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 46,
+    "fields": {
+      "recipient_email": "prajapatisanketssp321@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Sanket Prajapati NGO Claimer,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=PjQdYgMqFyStw4xJQh5lZE76TMnP2971KRF-biqdR4A\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T10:42:28.255Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 47,
+    "fields": {
+      "recipient_email": "prajapatisanketssp321@gmail.com",
+      "subject": "Your NGO is Verified — Start Claiming Food on FoodBridge!",
+      "body": "Hi Sanket Prajapati NGO Claimer,\n\nCongratulations! Your NGO \"Food Claim Ngo\" has been verified on FoodBridge.\n\nYou can now:\n- Browse available food donations\n- Claim food within your service radius\n- Coordinate pickups with donors\n\nStart browsing: http://localhost:5173/donations\n\n— The FoodBridge Team",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T10:56:30.668Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 48,
+    "fields": {
+      "recipient_email": "prajapatisanketssp321@gmail.com",
+      "subject": "FoodBridge NGO Account Application Status",
+      "body": "Hi Sanket Prajapati NGO Claimer,\n\nUnfortunately, your NGO application was rejected. Reason: Address is wring",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T10:56:47.965Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 49,
+    "fields": {
+      "recipient_email": "prajapatisanketssp321@gmail.com",
+      "subject": "Verify your FoodBridge email",
+      "body": "Hi Sanket Prajapati NGO Claimer,\n\nVerify your FoodBridge account here:\nhttp://localhost:5173/verify-email?token=95awJRwpH05XMNZLfLr1K3nm1buzIf9vBTza_I5L90s\n\nExpires in 24h.\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T11:02:03.326Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 50,
+    "fields": {
+      "recipient_email": "prajapatisanketssp321@gmail.com",
+      "subject": "Your NGO is Verified — Start Claiming Food on FoodBridge!",
+      "body": "Hi Sanket Prajapati NGO Claimer,\n\nCongratulations! Your NGO \"Sanket Welfare Trust\" has been verified on FoodBridge.\n\nYou can now:\n- Browse available food donations\n- Claim food within your service radius\n- Coordinate pickups with donors\n\nStart browsing: http://localhost:5173/donations\n\n— The FoodBridge Team",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T11:03:54.203Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 51,
+    "fields": {
+      "recipient_email": "prajapatisanketssp321@gmail.com",
+      "subject": "Donation Claimed — Contact Details for \"Bread  Sandwitch\"",
+      "body": "Hi Sanket Welfare Trust,\n\nYou claimed \"Bread  Sandwitch\" from a donor.\n\nOTP Code: 383551\n\nDonor Contact:\n  Name:  Sanket Prajapati\n  Phone: +91 8756551555\n  Email: sanketprajapati2005@gmail.com\n\nPickup: Pushpak Colony, Amravati, Maharashtra, 444600, India (distance unknown)\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T11:04:52.235Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 52,
+    "fields": {
+      "recipient_email": "sanketprajapati2005@gmail.com",
+      "subject": "Your Donation \"Bread  Sandwitch\" Has Been Claimed",
+      "body": "Hi Sanket Prajapati,\n\nYour donation \"Bread  Sandwitch\" was claimed by an NGO.\n\nThe NGO will show you an OTP at pickup.\n\nNGO Contact:\n  Name:  Sanket Welfare Trust\n  Phone: +91 8421927904\n  Email: prajapatisanketssp321@gmail.com\n\nPickup: Pushpak Colony, Amravati, Maharashtra, 444600, India (distance unknown)\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T11:04:58.243Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 53,
+    "fields": {
+      "recipient_email": "sanketprajapati2005@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Sanket Welfare Trust has successfully picked up your donation: Bread  Sandwitch. Thank you for your contribution!",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T11:07:57.578Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 54,
+    "fields": {
+      "recipient_email": "shyamngo@gmail.com",
+      "subject": "Donation Claimed — Contact Details for \"Veg Thali\"",
+      "body": "Hi Shayam Trust NGO Claimer,\n\nYou claimed \"Veg Thali\" from a donor.\n\nOTP Code: 483567\n\nDonor Contact:\n  Name:  Donor Sanket\n  Phone: +91 Not provided\n  Email: sanketprajapati.connect@gmail.com\n\nPickup: Akoli Road, Sainagar, Amravati, Maharashtra 444607 (1.49 km away)\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T11:12:40.626Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 55,
+    "fields": {
+      "recipient_email": "sanketprajapati.connect@gmail.com",
+      "subject": "Your Donation \"Veg Thali\" Has Been Claimed",
+      "body": "Hi Donor Sanket,\n\nYour donation \"Veg Thali\" was claimed by an NGO.\n\nThe NGO will show you an OTP at pickup.\n\nNGO Contact:\n  Name:  Shayam Trust NGO Claimer\n  Phone: +91 8180935924\n  Email: shyamngo@gmail.com\n\nPickup: Akoli Road, Sainagar, Amravati, Maharashtra 444607 (1.49 km away)\n\n— FoodBridge",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T11:12:47.018Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 56,
+    "fields": {
+      "recipient_email": "sanketprajapati.connect@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Shayam Trust NGO Claimer has successfully picked up your donation: Veg Thali. Thank you for your contribution!",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T11:22:01.566Z"
+    }
+  },
+  {
+    "model": "core.emaillog",
+    "pk": 57,
+    "fields": {
+      "recipient_email": "sanketprajapati.connect@gmail.com",
+      "subject": "Pickup Complete",
+      "body": "The NGO Shayam Trust NGO Claimer has successfully picked up your donation: Veg Thali. Thank you for your contribution!",
+      "status": "SENT",
+      "error_message": null,
+      "sent_at": "2026-04-26T11:22:04.962Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 6,
+    "fields": {
+      "donor": [
+        "donorpersona@gmail.com"
+      ],
+      "title": "Dosa and Idle",
+      "food_type": "VEG",
+      "quantity_servings": 45,
+      "description": "made from rice",
+      "allergen_notes": "made for uddat dal",
+      "pickup_address": "Samrathwadi Nagpur",
+      "location_lat": null,
+      "location_lng": null,
+      "pickup_window_start": "2026-04-21T01:02:00Z",
+      "pickup_window_end": "2026-04-21T01:30:00Z",
+      "expires_at": "2026-04-21T01:30:00Z",
+      "status": "EXPIRED",
+      "created_at": "2026-04-21T15:07:52.547Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 15,
+    "fields": {
+      "donor": [
+        "testjoh@gmail.com"
+      ],
+      "title": "Veg Thali",
+      "food_type": "VEG",
+      "quantity_servings": 23,
+      "description": "23 people can easily served",
+      "allergen_notes": "",
+      "pickup_address": "Sainagar, Amravati",
+      "location_lat": "21.154541",
+      "location_lng": "77.644296",
+      "pickup_window_start": "2026-04-25T20:05:00Z",
+      "pickup_window_end": "2026-04-25T21:14:00Z",
+      "expires_at": "2026-04-25T21:14:00Z",
+      "status": "EXPIRED",
+      "created_at": "2026-04-25T14:33:51.834Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 16,
+    "fields": {
+      "donor": [
+        "prajapatisanket842@gmail.com"
+      ],
+      "title": "veg Biryani",
+      "food_type": "VEG",
+      "quantity_servings": 55,
+      "description": "veg biryani",
+      "allergen_notes": "",
+      "pickup_address": "Sainagar, Amravati",
+      "location_lat": "21.154541",
+      "location_lng": "77.644296",
+      "pickup_window_start": "2026-04-25T21:11:00Z",
+      "pickup_window_end": "2026-04-25T21:59:00Z",
+      "expires_at": "2026-04-25T21:59:00Z",
+      "status": "EXPIRED",
+      "created_at": "2026-04-25T15:41:45.801Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 17,
+    "fields": {
+      "donor": [
+        "ramdonor@gmail.com"
+      ],
+      "title": "Puran poli",
+      "food_type": "VEG",
+      "quantity_servings": 34,
+      "description": "puran poli",
+      "allergen_notes": "none",
+      "pickup_address": "sainagar Amravati",
+      "location_lat": "21.154541",
+      "location_lng": "77.644296",
+      "pickup_window_start": "2026-04-25T21:44:00Z",
+      "pickup_window_end": "2026-04-25T10:44:00Z",
+      "expires_at": "2026-04-25T10:44:00Z",
+      "status": "EXPIRED",
+      "created_at": "2026-04-25T16:15:16.211Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 18,
+    "fields": {
+      "donor": [
+        "archanaprajapatissp321@gmail.com"
+      ],
+      "title": "Puri and sabji",
+      "food_type": "VEG",
+      "quantity_servings": 45,
+      "description": "puri",
+      "allergen_notes": "",
+      "pickup_address": "Ahemdabad, Gujrat",
+      "location_lat": "20.931669",
+      "location_lng": "77.753005",
+      "pickup_window_start": "2026-04-25T22:00:00Z",
+      "pickup_window_end": "2026-04-25T23:45:00Z",
+      "expires_at": "2026-04-25T23:45:00Z",
+      "status": "PICKED_UP",
+      "created_at": "2026-04-25T16:31:01.267Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 22,
+    "fields": {
+      "donor": [
+        "testdonor@gmail.com"
+      ],
+      "title": "Fresh Roti",
+      "food_type": "VEG",
+      "quantity_servings": 50,
+      "description": "Freshly made rotis",
+      "allergen_notes": "",
+      "pickup_address": "Rajapeth, Amravati",
+      "location_lat": "20.921200",
+      "location_lng": "77.756285",
+      "pickup_window_start": "2026-12-31T10:00:00Z",
+      "pickup_window_end": "2026-12-31T22:00:00Z",
+      "expires_at": "2026-12-31T22:00:00Z",
+      "status": "PICKED_UP",
+      "created_at": "2026-04-25T17:20:03.734Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 23,
+    "fields": {
+      "donor": [
+        "sanketprajapati.connect@gmail.com"
+      ],
+      "title": "Fresh Veg Pulav",
+      "food_type": "VEG",
+      "quantity_servings": 20,
+      "description": "Rice pullav",
+      "allergen_notes": "none",
+      "pickup_address": "Panchavati near Panjabrao Deshmukh Polytechnic, PanchVati, Shivaji Nagar, Amravati",
+      "location_lat": "21.154541",
+      "location_lng": "77.644296",
+      "pickup_window_start": "2026-04-26T15:15:00Z",
+      "pickup_window_end": "2026-04-26T17:12:00Z",
+      "expires_at": "2026-04-26T17:12:00Z",
+      "status": "PICKED_UP",
+      "created_at": "2026-04-26T09:43:51.684Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 24,
+    "fields": {
+      "donor": [
+        "sanketprajapati.connect@gmail.com"
+      ],
+      "title": "Veg Thali",
+      "food_type": "VEG",
+      "quantity_servings": 45,
+      "description": "Veg",
+      "allergen_notes": "",
+      "pickup_address": "Akoli Road, Sainagar, Amravati, Maharashtra 444607",
+      "location_lat": "20.895384",
+      "location_lng": "77.755305",
+      "pickup_window_start": "2026-04-26T16:00:00Z",
+      "pickup_window_end": "2026-04-26T17:00:00Z",
+      "expires_at": "2026-04-26T17:00:00Z",
+      "status": "PICKED_UP",
+      "created_at": "2026-04-26T10:10:01.497Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 25,
+    "fields": {
+      "donor": [
+        "sanketprajapati2005@gmail.com"
+      ],
+      "title": "Bread  Sandwitch",
+      "food_type": "VEG",
+      "quantity_servings": 54,
+      "description": "Bread",
+      "allergen_notes": "",
+      "pickup_address": "Pushpak Colony, Amravati, Maharashtra, 444600, India",
+      "location_lat": "20.894814",
+      "location_lng": "77.740990",
+      "pickup_window_start": "2026-04-26T16:05:00Z",
+      "pickup_window_end": "2026-04-26T17:05:00Z",
+      "expires_at": "2026-04-26T17:05:00Z",
+      "status": "PICKED_UP",
+      "created_at": "2026-04-26T10:40:22.674Z"
+    }
+  },
+  {
+    "model": "donations.donation",
+    "pk": 26,
+    "fields": {
+      "donor": [
+        "ramdonor@gmail.com"
+      ],
+      "title": "Pasta",
+      "food_type": "VEG",
+      "quantity_servings": 152,
+      "description": "pasta",
+      "allergen_notes": "none",
+      "pickup_address": "Pushpak Colony, Amravati, Maharashtra, 444600, India",
+      "location_lat": "20.894856",
+      "location_lng": "77.740910",
+      "pickup_window_start": "2026-04-26T19:29:00Z",
+      "pickup_window_end": "2026-04-26T21:29:00Z",
+      "expires_at": "2026-04-26T21:29:00Z",
+      "status": "AVAILABLE",
+      "created_at": "2026-04-26T11:00:04.226Z"
+    }
+  },
+  {
+    "model": "donations.claim",
+    "pk": 13,
+    "fields": {
+      "donation": 18,
+      "ngo": 7,
+      "status": "PICKED_UP",
+      "otp_code": "886562",
+      "created_at": "2026-04-25T16:35:36.000Z",
+      "updated_at": "2026-04-25T16:38:43.050Z"
+    }
+  },
+  {
+    "model": "donations.claim",
+    "pk": 15,
+    "fields": {
+      "donation": 22,
+      "ngo": 6,
+      "status": "PICKED_UP",
+      "otp_code": "337457",
+      "created_at": "2026-04-25T17:25:15.872Z",
+      "updated_at": "2026-04-25T17:30:24.496Z"
+    }
+  },
+  {
+    "model": "donations.claim",
+    "pk": 17,
+    "fields": {
+      "donation": 23,
+      "ngo": 10,
+      "status": "PICKED_UP",
+      "otp_code": "950188",
+      "created_at": "2026-04-26T09:50:54.334Z",
+      "updated_at": "2026-04-26T09:55:42.704Z"
+    }
+  },
+  {
+    "model": "donations.claim",
+    "pk": 19,
+    "fields": {
+      "donation": 25,
+      "ngo": 12,
+      "status": "PICKED_UP",
+      "otp_code": "383551",
+      "created_at": "2026-04-26T11:04:45.950Z",
+      "updated_at": "2026-04-26T11:07:52.523Z"
+    }
+  },
+  {
+    "model": "donations.claim",
+    "pk": 20,
+    "fields": {
+      "donation": 24,
+      "ngo": 7,
+      "status": "PICKED_UP",
+      "otp_code": "483567",
+      "created_at": "2026-04-26T11:12:35.279Z",
+      "updated_at": "2026-04-26T11:21:59.859Z"
+    }
+  },
+  {
+    "model": "donations.donationphoto",
+    "pk": 5,
+    "fields": {
+      "donation": 6,
+      "photo": "donations/idle.jpg",
+      "uploaded_at": "2026-04-21T15:07:52.726Z"
+    }
+  },
+  {
+    "model": "donations.donationphoto",
+    "pk": 12,
+    "fields": {
+      "donation": 15,
+      "photo": "donations/images_jXey6ns.jpg",
+      "uploaded_at": "2026-04-25T14:33:52.102Z"
+    }
+  },
+  {
+    "model": "donations.donationphoto",
+    "pk": 13,
+    "fields": {
+      "donation": 16,
+      "photo": "donations/biryani_SI6V8Yb.jpg",
+      "uploaded_at": "2026-04-25T15:41:45.971Z"
+    }
+  },
+  {
+    "model": "donations.donationphoto",
+    "pk": 14,
+    "fields": {
+      "donation": 17,
+      "photo": "donations/puran_poli_5Ruxbwi.jpg",
+      "uploaded_at": "2026-04-25T16:15:16.651Z"
+    }
+  },
+  {
+    "model": "donations.donationphoto",
+    "pk": 15,
+    "fields": {
+      "donation": 18,
+      "photo": "donations/chola_butture_qAF0Cpy.jpg",
+      "uploaded_at": "2026-04-25T16:31:01.646Z"
+    }
+  },
+  {
+    "model": "donations.donationphoto",
+    "pk": 16,
+    "fields": {
+      "donation": 23,
+      "photo": "donations/biryani_eA9qlZk.jpg",
+      "uploaded_at": "2026-04-26T09:43:52.003Z"
+    }
+  },
+  {
+    "model": "donations.donationphoto",
+    "pk": 17,
+    "fields": {
+      "donation": 24,
+      "photo": "donations/images_0w8UmoQ.jpg",
+      "uploaded_at": "2026-04-26T10:10:01.917Z"
+    }
+  }
+]

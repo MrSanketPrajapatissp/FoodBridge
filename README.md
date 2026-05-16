@@ -377,7 +377,7 @@ taskkill /PID <PID_NUMBER> /F
 ## Tech Stack Reference
 
 | Layer | Technology |
-|-------|-----------|
+|-------|-----------| 
 | Backend Framework | Django 5.0.3 |
 | API | Django REST Framework |
 | Authentication | JWT (`djangorestframework-simplejwt`) |
