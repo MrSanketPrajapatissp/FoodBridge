@@ -34,8 +34,15 @@ def donation_create(request):
     if ser.is_valid():
         donation = ser.save(donor=request.user)
         photos = request.FILES.getlist('photos')
+        photo_errors = []
         for p in photos:
-            DonationPhoto.objects.create(donation=donation, photo=p)
+            try:
+                DonationPhoto.objects.create(donation=donation, photo=p)
+            except Exception as e:
+                print(f"[ERROR] Photo upload failed: {e}")
+                photo_errors.append(str(e))
+        if photo_errors:
+            print(f"[WARN] {len(photo_errors)} photo(s) failed to upload to Cloudinary. Check env vars.")
         print(f"[SUCCESS] Donation created: {donation.id}")
         return Response(DonationSerializer(donation, context={'request': request}).data)
     print(f"[ERROR] Donation serializer errors: {ser.errors}")
