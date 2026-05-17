@@ -1,3 +1,4 @@
+import threading
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -6,6 +7,11 @@ from django.contrib.auth import authenticate
 from .models import User, Organization, Notification, EmailLog
 from .serializers import RegisterSerializer, UserSerializer, OrganizationSerializer, NotificationSerializer, EmailLogSerializer
 from .email_utils import send_verification_email, send_admin_ngo_verification_email, send_admin_ngo_rejection_email
+
+def send_email_async(fn, *args, **kwargs):
+    """Run any email function in a background thread so HTTP response is never blocked."""
+    t = threading.Thread(target=fn, args=args, kwargs=kwargs, daemon=True)
+    t.start()
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
@@ -30,10 +36,7 @@ def register(request):
     ser = RegisterSerializer(data=request.data)
     if ser.is_valid():
         user = ser.save()
-        try:
-            send_verification_email(user)
-        except Exception as e:
-            print(f"[WARN] Verification email failed to send for {user.email}: {e}")
+        send_email_async(send_verification_email, user)
         refresh = RefreshToken.for_user(user)
         return Response({
             'access': str(refresh.access_token),
@@ -66,7 +69,7 @@ def logout_view(request):
         token = RefreshToken(refresh)
         token.blacklist()
         return Response({'success': True})
-    except:
+    except Exception:
         return Response({'error': 'Invalid token'}, status=400)
 
 @api_view(['GET'])
@@ -114,7 +117,7 @@ def verify_email(request):
                     title='Organization Verified',
                     message=f'Your NGO "{org.organization_name}" has been automatically verified. You can now claim food donations!'
                 )
-                send_admin_ngo_verification_email(u)
+                send_email_async(send_admin_ngo_verification_email, u)
 
         return Response({'success': True, 'role': u.role})
 
@@ -151,7 +154,7 @@ def org_create(request):
                 title='Organization Verified',
                 message=f'Your NGO "{org.organization_name}" has been automatically verified because your email is verified. You can now claim food donations!'
             )
-            send_admin_ngo_verification_email(request.user)
+            send_email_async(send_admin_ngo_verification_email, request.user)
 
         return Response(OrganizationSerializer(org).data)
     return Response(ser.errors, status=400)
@@ -216,7 +219,7 @@ def admin_stats(request):
     return Response({
         'total_donations': td,
         'total_claims': tc,
-        'pickup_success_rate': (tpu / td * 100) if td > 0 else 0.0,
+        'pickup_success_rate': round((tpu / td * 100), 2) if td > 0 else 0.0,
         'total_picked_up': tpu
     })
 
@@ -259,7 +262,7 @@ def admin_verify_ngo(request, pk):
         org = Organization.objects.get(pk=pk)
         org.verification_status = 'VERIFIED'
         org.save()
-        send_admin_ngo_verification_email(org.user)
+        send_email_async(send_admin_ngo_verification_email, org.user)
         Notification.objects.create(recipient=org.user, notification_type='NGO_VERIFIED', title='Organization Verified', message='Your NGO has been verified.')
         return Response({'success': True})
     except Organization.DoesNotExist:
@@ -276,7 +279,7 @@ def admin_reject_ngo(request, pk):
         org.verification_status = 'REJECTED'
         org.rejection_reason = reason
         org.save()
-        send_admin_ngo_rejection_email(org.user, reason)
+        send_email_async(send_admin_ngo_rejection_email, org.user, reason)
         Notification.objects.create(recipient=org.user, notification_type='NGO_REJECTED', title='Organization Rejected', message=f'Reason: {reason}')
         return Response({'success': True})
     except Organization.DoesNotExist:

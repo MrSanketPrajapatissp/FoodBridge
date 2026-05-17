@@ -1,8 +1,10 @@
+import hmac
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
+from core.views import send_email_async
 from core.email_utils import send_email_logged, send_contact_exchange_email
 from .models import Donation, Claim
 from .serializers_claims import ClaimSerializer
@@ -82,31 +84,21 @@ def claim_create(request):
     )
     
     # ---- CONTACT EXCHANGE EMAIL to NGO (includes OTP + donor contact) ----
-    send_contact_exchange_email(
-        to_email=ngo_email,
-        to_name=ngo_name,
-        role='NGO',
-        food_title=donation.title,
-        otp_code=claim.otp_code,
-        other_name=donor_name,
-        other_phone=donor_phone,
-        other_email=donor_email,
-        pickup_address=donation.pickup_address,
-        distance_km=distance_km
+    send_email_async(
+        send_contact_exchange_email,
+        to_email=ngo_email, to_name=ngo_name, role='NGO',
+        food_title=donation.title, otp_code=claim.otp_code,
+        other_name=donor_name, other_phone=donor_phone, other_email=donor_email,
+        pickup_address=donation.pickup_address, distance_km=distance_km
     )
 
     # ---- CONTACT EXCHANGE EMAIL to Donor (includes NGO contact) ----
-    send_contact_exchange_email(
-        to_email=donor_email,
-        to_name=donor_name,
-        role='DONOR',
-        food_title=donation.title,
-        otp_code=claim.otp_code,
-        other_name=ngo_name,
-        other_phone=ngo_phone,
-        other_email=ngo_email,
-        pickup_address=donation.pickup_address,
-        distance_km=distance_km
+    send_email_async(
+        send_contact_exchange_email,
+        to_email=donor_email, to_name=donor_name, role='DONOR',
+        food_title=donation.title, otp_code=claim.otp_code,
+        other_name=ngo_name, other_phone=ngo_phone, other_email=ngo_email,
+        pickup_address=donation.pickup_address, distance_km=distance_km
     )
 
     response_data = ClaimSerializer(claim).data
@@ -187,7 +179,8 @@ def verify_otp(request, pk):
         )
         
         # Email to donor
-        send_email_logged(
+        send_email_async(
+            send_email_logged,
             request.user.email,
             'Pickup Complete',
             f'The NGO {claim.ngo.organization_name} has successfully picked up your donation: {donation.title}. Thank you for your contribution!'
