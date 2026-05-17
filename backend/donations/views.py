@@ -16,8 +16,7 @@ def donation_create(request):
         return Response({'error': 'Donor only'}, status=403)
     
     data = request.data.copy()
-    print(f"DEBUG REQ DATA: {data}")
-    
+
     # Auto-geocode if address is present and coords are missing
     address = data.get('pickup_address')
     lat = data.get('location_lat')
@@ -29,7 +28,6 @@ def donation_create(request):
             data['location_lat'] = round(Decimal(str(alat)), 6)
             data['location_lng'] = round(Decimal(str(alng)), 6)
     
-    print(f"CLEANED DATA: {data}")
     ser = DonationSerializer(data=data)
     if ser.is_valid():
         donation = ser.save(donor=request.user)

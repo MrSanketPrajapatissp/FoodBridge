@@ -21,6 +21,8 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def validate_phone_number(self, value):
         import re
+        if not value:
+            return value
         cleaned = re.sub(r'\s', '', value)
         if not re.match(r'^[6-9]\d{9}$', cleaned):
             raise serializers.ValidationError("Enter a valid 10-digit mobile number starting with 6-9.")

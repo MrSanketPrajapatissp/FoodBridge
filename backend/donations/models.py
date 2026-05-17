@@ -25,8 +25,8 @@ class Claim(models.Model):
 
   def save(self, *args, **kwargs):
     if not self.otp_code:
-      import random
-      self.otp_code = ''.join([str(random.randint(0, 9)) for _ in range(6)])
+      import secrets
+      self.otp_code = ''.join([str(secrets.randbelow(10)) for _ in range(6)])
     super().save(*args, **kwargs)
 
 class DonationPhoto(models.Model):
