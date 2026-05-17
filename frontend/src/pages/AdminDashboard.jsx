@@ -205,27 +205,40 @@ export default function AdminDashboard() {
           </thead>
           <tbody>
             {emailLogs.map(log => (
-                <tr key={log.id} className="border-b border-surface-border last:border-0 hover:bg-surface-muted transition-colors font-body text-sm">
-                  <td className="px-6 py-4">
-                    {log.status === 'SENT' ? (
-                      <span className="bg-green-50 text-green-700 font-mono text-xs uppercase rounded-badge px-2 py-1">SENT</span>
-                    ) : (
-                      <span className="bg-red-50 text-red-700 font-mono text-xs uppercase rounded-badge px-2 py-1">FAILED</span>
-                    )}
-                  </td>
-                  <td className="px-6 py-4">{log.recipient_email}</td>
-                  <td className="px-6 py-4 max-w-xs truncate">{log.subject}</td>
-                  <td className="px-6 py-4">
-                    {log.error_message ? (
-                      <span className="text-red-600 font-mono text-xs bg-red-50 px-2 py-1 rounded block max-w-xs truncate" title={log.error_message}>
-                        {log.error_message}
-                      </span>
-                    ) : (
-                      <span className="text-green-600 font-mono text-xs">—</span>
-                    )}
-                  </td>
-                  <td className="px-6 py-4 font-mono text-xs text-text-muted">{new Date(log.sent_at).toLocaleString()}</td>
-                </tr>
+              // Each row shows one email attempt — SENT (green) or FAILED (red with reason)
+              <tr key={log.id} className="border-b border-surface-border last:border-0 hover:bg-surface-muted transition-colors font-body text-sm">
+
+                {/* Status badge: green for success, red for failure */}
+                <td className="px-6 py-4">
+                  {log.status === 'SENT' ? (
+                    <span className="bg-green-50 text-green-700 font-mono text-xs uppercase rounded-badge px-2 py-1">SENT</span>
+                  ) : (
+                    <span className="bg-red-50 text-red-700 font-mono text-xs uppercase rounded-badge px-2 py-1">FAILED</span>
+                  )}
+                </td>
+
+                <td className="px-6 py-4">{log.recipient_email}</td>
+                <td className="px-6 py-4 max-w-xs truncate">{log.subject}</td>
+
+                {/* Error column: shows the exact SMTP/email error reason when status is FAILED */}
+                <td className="px-6 py-4">
+                  {log.error_message ? (
+                    <span
+                      className="text-red-600 font-mono text-xs bg-red-50 px-2 py-1 rounded block max-w-xs truncate"
+                      title={log.error_message}  // Full error on hover
+                    >
+                      {log.error_message}
+                    </span>
+                  ) : (
+                    <span className="text-green-600 font-mono text-xs">—</span>
+                  )}
+                </td>
+
+                <td className="px-6 py-4 font-mono text-xs text-text-muted">
+                  {new Date(log.sent_at).toLocaleString()}
+                </td>
+
+              </tr>
             ))}
           </tbody>
         </table>
