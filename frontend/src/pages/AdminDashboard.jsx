@@ -199,23 +199,33 @@ export default function AdminDashboard() {
               <th className="font-mono text-xs uppercase tracking-wide px-6 py-4">Status</th>
               <th className="font-mono text-xs uppercase tracking-wide px-6 py-4">Recipient</th>
               <th className="font-mono text-xs uppercase tracking-wide px-6 py-4">Subject</th>
+              <th className="font-mono text-xs uppercase tracking-wide px-6 py-4">Error</th>
               <th className="font-mono text-xs uppercase tracking-wide px-6 py-4">Timestamp</th>
             </tr>
           </thead>
           <tbody>
             {emailLogs.map(log => (
-              <tr key={log.id} className="border-b border-surface-border last:border-0 hover:bg-surface-muted transition-colors font-body text-sm">
-                <td className="px-6 py-4">
-                  {log.status === 'SENT' ? (
-                    <span className="bg-green-50 text-green-700 font-mono text-xs uppercase rounded-badge px-2 py-1">SENT</span>
-                  ) : (
-                    <span className="bg-red-50 text-red-700 font-mono text-xs uppercase rounded-badge px-2 py-1" title={log.error_message}>FAILED</span>
-                  )}
-                </td>
-                <td className="px-6 py-4">{log.recipient_email}</td>
-                <td className="px-6 py-4 max-w-xs truncate">{log.subject}</td>
-                <td className="px-6 py-4 font-mono text-xs text-text-muted">{new Date(log.sent_at).toLocaleString()}</td>
-              </tr>
+                <tr key={log.id} className="border-b border-surface-border last:border-0 hover:bg-surface-muted transition-colors font-body text-sm">
+                  <td className="px-6 py-4">
+                    {log.status === 'SENT' ? (
+                      <span className="bg-green-50 text-green-700 font-mono text-xs uppercase rounded-badge px-2 py-1">SENT</span>
+                    ) : (
+                      <span className="bg-red-50 text-red-700 font-mono text-xs uppercase rounded-badge px-2 py-1">FAILED</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4">{log.recipient_email}</td>
+                  <td className="px-6 py-4 max-w-xs truncate">{log.subject}</td>
+                  <td className="px-6 py-4">
+                    {log.error_message ? (
+                      <span className="text-red-600 font-mono text-xs bg-red-50 px-2 py-1 rounded block max-w-xs truncate" title={log.error_message}>
+                        {log.error_message}
+                      </span>
+                    ) : (
+                      <span className="text-green-600 font-mono text-xs">—</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4 font-mono text-xs text-text-muted">{new Date(log.sent_at).toLocaleString()}</td>
+                </tr>
             ))}
           </tbody>
         </table>

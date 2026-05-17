@@ -7,6 +7,7 @@ def send_email_logged(to, subject, body):
     EmailLog.objects.create(recipient_email=to,subject=subject,body=body,status='SENT')
     return True
   except Exception as e:
+    print(f"[EMAIL ERROR] send_email_logged to {to}: {type(e).__name__}: {e}", flush=True)
     EmailLog.objects.create(recipient_email=to,subject=subject,body=body,status='FAILED',error_message=str(e))
     return False
 
@@ -47,6 +48,7 @@ def send_verification_email(user):
     EmailLog.objects.create(recipient_email=user.email, subject="Verify your FoodBridge email", body=text_body, status='SENT')
     return True
   except Exception as e:
+    print(f"[EMAIL ERROR] send_verification_email to {user.email}: {type(e).__name__}: {e}", flush=True)
     EmailLog.objects.create(recipient_email=user.email, subject="Verify your FoodBridge email", body=text_body, status='FAILED', error_message=str(e))
     return False
 
@@ -124,6 +126,7 @@ def send_admin_ngo_verification_email(user):
     EmailLog.objects.create(recipient_email=user.email, subject=subject, body=text_body, status='SENT')
     return True
   except Exception as e:
+    print(f"[EMAIL ERROR] send_admin_ngo_verification_email to {user.email}: {type(e).__name__}: {e}", flush=True)
     EmailLog.objects.create(recipient_email=user.email, subject="NGO Verified", body=text_body, status='FAILED', error_message=str(e))
     return False
 
@@ -248,5 +251,6 @@ def send_contact_exchange_email(to_email, to_name, role, food_title, otp_code,
     EmailLog.objects.create(recipient_email=to_email, subject=subject, body=text_body, status='SENT')
     return True
   except Exception as e:
+    print(f"[EMAIL ERROR] send_contact_exchange_email to {to_email}: {type(e).__name__}: {e}", flush=True)
     EmailLog.objects.create(recipient_email=to_email, subject=subject, body=text_body, status='FAILED', error_message=str(e))
     return False
