@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from decimal import Decimal
 from rest_framework.decorators import api_view, permission_classes, parser_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -117,3 +118,8 @@ def donation_cancel(request, pk):
 def my_donations(request):
     qs = Donation.objects.filter(donor=request.user).order_by('-created_at')
     return Response(DonationSerializer(qs, many=True, context={'request': request}).data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def health_check(request):
+    return JsonResponse({"status": "ok", "service": "foodbridge-backend", "version": "1.0"})

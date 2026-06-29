@@ -1,0 +1,62 @@
+name: "Rollback FoodBridge Deployment"
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Commit SHA to rollback to (e.g., a1b2c3d4...)"
+        required: true
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Rollback App Server via SSM
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ROLLBACK_VERSION: ${{ github.event.inputs.version }}
+        run: |
+          aws ssm send-command \
+            --instance-ids "${{ secrets.APP_SERVER_INSTANCE_ID }}" \
+            --document-name "AWS-RunShellScript" \
+            --parameters "commands=[
+              \"aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin $ECR_REGISTRY\",
+              \"docker pull $ECR_REGISTRY/foodbridge-backend:$ROLLBACK_VERSION\",
+              \"docker stop foodbridge-backend || true\",
+              \"docker rm foodbridge-backend || true\",
+              \"docker run -d --name foodbridge-backend --restart unless-stopped -p 8000:8000 --env-file /etc/foodbridge/backend.env $ECR_REGISTRY/foodbridge-backend:$ROLLBACK_VERSION\"
+            ]" \
+            --region ${{ secrets.AWS_REGION }}
+
+      - name: Rollback Web Server via SSM
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ROLLBACK_VERSION: ${{ github.event.inputs.version }}
+        run: |
+          aws ssm send-command \
+            --instance-ids "${{ secrets.WEB_SERVER_INSTANCE_ID }}" \
+            --document-name "AWS-RunShellScript" \
+            --parameters "commands=[
+              \"aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin $ECR_REGISTRY\",
+              \"docker pull $ECR_REGISTRY/foodbridge-frontend:$ROLLBACK_VERSION\",
+              \"docker stop foodbridge-frontend || true\",
+              \"docker rm foodbridge-frontend || true\",
+              \"docker run -d --name foodbridge-frontend --restart unless-stopped -p 80:80 --env-file /etc/foodbridge/frontend.env $ECR_REGISTRY/foodbridge-frontend:$ROLLBACK_VERSION\"
+            ]" \
+            --region ${{ secrets.AWS_REGION }}
+
+      - name: Rollback Finished
+        run: |
+          echo "Rollback successfully triggered for version: ${{ github.event.inputs.version }}"

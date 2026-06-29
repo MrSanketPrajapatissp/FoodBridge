@@ -7,12 +7,7 @@ def send_email_logged(to, subject, body):
     EmailLog.objects.create(recipient_email=to,subject=subject,body=body,status='SENT')
     return True
   except Exception as e:
-    # Print the exact error to the server logs (visible in Render dashboard → Logs tab)
-    # This helps debug SMTP failures without needing shell access.
-    # flush=True ensures the log line appears immediately (not buffered).
-    print(f"[EMAIL ERROR] send_email_logged to {to}: {type(e).__name__}: {e}", flush=True)
-    # Also save the error in the database so admins can view it in the Admin Dashboard
-    EmailLog.objects.create(recipient_email=to, subject=subject, body=body, status='FAILED', error_message=str(e))
+    EmailLog.objects.create(recipient_email=to,subject=subject,body=body,status='FAILED',error_message=str(e))
     return False
 
 def send_verification_email(user):
@@ -52,9 +47,6 @@ def send_verification_email(user):
     EmailLog.objects.create(recipient_email=user.email, subject="Verify your FoodBridge email", body=text_body, status='SENT')
     return True
   except Exception as e:
-    # Print the SMTP failure to Render logs so we can debug without shell access
-    print(f"[EMAIL ERROR] send_verification_email to {user.email}: {type(e).__name__}: {e}", flush=True)
-    # Save failure in DB — visible in Admin Dashboard → Email Logs tab
     EmailLog.objects.create(recipient_email=user.email, subject="Verify your FoodBridge email", body=text_body, status='FAILED', error_message=str(e))
     return False
 
@@ -132,7 +124,6 @@ def send_admin_ngo_verification_email(user):
     EmailLog.objects.create(recipient_email=user.email, subject=subject, body=text_body, status='SENT')
     return True
   except Exception as e:
-    print(f"[EMAIL ERROR] send_admin_ngo_verification_email to {user.email}: {type(e).__name__}: {e}", flush=True)
     EmailLog.objects.create(recipient_email=user.email, subject="NGO Verified", body=text_body, status='FAILED', error_message=str(e))
     return False
 
@@ -257,6 +248,5 @@ def send_contact_exchange_email(to_email, to_name, role, food_title, otp_code,
     EmailLog.objects.create(recipient_email=to_email, subject=subject, body=text_body, status='SENT')
     return True
   except Exception as e:
-    print(f"[EMAIL ERROR] send_contact_exchange_email to {to_email}: {type(e).__name__}: {e}", flush=True)
     EmailLog.objects.create(recipient_email=to_email, subject=subject, body=text_body, status='FAILED', error_message=str(e))
     return False

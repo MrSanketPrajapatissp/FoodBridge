@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.local
+db.sqlite3
+media/
+staticfiles/
+.git/
+.gitignore
+*.md
+data_export*.json
+inspect_docx.py
+railway.toml
+Procfile

@@ -3,10 +3,14 @@ from django.urls import path
 from core import views
 from donations import views as donations_views
 from donations import views_claims
+from donations.views import health_check
 
 urlpatterns = [
+    # Health check endpoints for root-level and ALB target group routing (simplified to use donations health check)
+    path('health/', health_check, name='health_check'),
+    path('api/health/', health_check, name='api_health_check'),
+    
     path('admin/', admin.site.urls),
-    path('api/health/', views.health_check),
     path('api/stats/', views.platform_stats),
     path('api/register/', views.register),
     path('api/login/', views.login_view),

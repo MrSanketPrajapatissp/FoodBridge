@@ -20,7 +20,7 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = os.environ.get(
     'ALLOWED_HOSTS',
-    'localhost,127.0.0.1,.onrender.com,.vercel.app'
+    'localhost,127.0.0.1,.onrender.com,.vercel.app,.elb.amazonaws.com'
 ).split(',')
 
 AUTH_USER_MODEL = 'core.User'
@@ -137,11 +137,10 @@ SIMPLE_JWT = {
 # ========================
 # CORS (FIXED)
 # ========================
-CORS_ALLOWED_ORIGINS = [
-    "https://food-bridge-blond.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:3000",
-]
+CORS_ALLOWED_ORIGINS = os.environ.get(
+    'CORS_ALLOWED_ORIGINS',
+    'https://food-bridge-blond.vercel.app,http://localhost:5173,http://localhost:3000'
+).split(',')
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.vercel\.app$"
