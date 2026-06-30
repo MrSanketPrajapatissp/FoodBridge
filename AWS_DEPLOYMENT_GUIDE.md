@@ -213,7 +213,7 @@ CLOUDINARY_API_SECRET=syHHp7HABD4oHemhZgoTEWvzA70
 
 --- EMAIL (Gmail SMTP) ---
 EMAIL_HOST_USER=foodbridge.admin.connect@gmail.com
-EMAIL_HOST_PASSWORD=hkmfvnhodggwngtx
+EMAIL_HOST_PASSWORD=gpydoufziomoemyj
 
 --- DJANGO SECRET KEY ---
 SECRET_KEY=your-random-secret-key-here-make-it-long-and-random-abc123xyz789
@@ -245,7 +245,7 @@ DATABASE_URL=postgres://foodbridge_admin:YOUR_DB_PASSWORD@foodbridge-db.XXXXX.ap
 | `/foodbridge/CLOUDINARY_API_KEY` | `513546431197356` |
 | `/foodbridge/CLOUDINARY_API_SECRET` | `syHHp7HABD4oHemhZgoTEWvzA70` |
 | `/foodbridge/EMAIL_HOST_USER` | `foodbridge.admin.connect@gmail.com` |
-| `/foodbridge/EMAIL_HOST_PASSWORD` | `hkmfvnhodggwngtx` |
+| `/foodbridge/EMAIL_HOST_PASSWORD` | `gpydoufziomoemyj` |
 | `/foodbridge/FRONTEND_URL` | `https://www.sanketdevs.online` |
 | `/foodbridge/EMAIL_BACKEND_TYPE` | `gmail` |
 | `/foodbridge/DEBUG` | `False` |
