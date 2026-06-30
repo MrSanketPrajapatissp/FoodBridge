@@ -12,7 +12,7 @@ systemctl enable docker
 
 # Configuration variables
 AWS_REGION=ap-south-1
-ECR_URI=123456789012.dkr.ecr.ap-south-1.amazonaws.com
+ECR_URI=231101979896.dkr.ecr.ap-south-1.amazonaws.com
 
 # Login to AWS ECR
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_URI
