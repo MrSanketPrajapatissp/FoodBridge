@@ -20,9 +20,9 @@ aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --
 # Create environment configuration directory
 mkdir -p /etc/foodbridge
 
-# Write Internal Load Balancer DNS to the frontend env config file.
-# Replaced with internal ALB DNS target URL in Launch Template creation.
-echo "BACKEND_ALB_DNS=internal-alb-placeholder.us-east-1.elb.amazonaws.com" > /etc/foodbridge/frontend.env
+# Retrieve Internal Load Balancer DNS dynamically from AWS Parameter Store
+echo "Retrieving Internal ALB DNS from Parameter Store..."
+echo "BACKEND_ALB_DNS=$(aws ssm get-parameter --name /foodbridge/BACKEND_ALB_DNS --with-decryption --query Parameter.Value --output text --region $AWS_REGION)" > /etc/foodbridge/frontend.env
 
 # Pull latest frontend image
 docker pull $ECR_URI/foodbridge-frontend:latest
