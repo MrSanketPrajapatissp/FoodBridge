@@ -395,4 +395,24 @@ taskkill /PID <PID_NUMBER> /F
 
 ---
 
+## 🔑 Default Credentials & Accounts (For Testing & Validation)
+
+Below are the pre-configured database user credentials loaded via setup fixtures and seeding scripts:
+
+### 👤 Admin User (Django Admin Panel & Admin Dashboard)
+*   **Email/Username**: `foodbridge.admin.connect@gmail.com`
+*   **Password**: `pass@123`
+
+### 👤 Test Donor User (For Creating Donations)
+*   **Email/Username**: `prajapatisanketssp321@gmail.com`
+*   **Password**: `pass@123`
+
+### 👤 Test NGO User (For Claiming Donations)
+*   **Email/Username**: `sanketprajapatipdp@gmail.com`
+*   **Password**: `pass@123`
+*   **NGO Organization Name**: `Sanket Welfare` (Auto-verified)
+
+---
+
 *FoodBridge — Reducing food waste, one meal at a time. 🌿*
+

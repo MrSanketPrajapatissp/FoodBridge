@@ -8,6 +8,12 @@ echo "Applying database migrations..."
 python manage.py migrate --noinput
 echo "Migrations complete."
 
+# Automatically create/update default Admin, Donor, and NGO users on AWS RDS
+echo "Seeding default Admin and testing user accounts..."
+python create_admin.py
+python create_testing_users.py
+echo "Seeding complete."
+
 # Start Django-Q cluster in the background
 echo "Starting Django-Q cluster..."
 python manage.py qcluster &
