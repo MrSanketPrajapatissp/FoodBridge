@@ -46,6 +46,7 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Deploy Backend to App Server via SSM
+        if: ${{ secrets.APP_SERVER_INSTANCE_ID != '' }}
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
@@ -62,6 +63,7 @@ jobs:
             --region ${{ secrets.AWS_REGION || 'ap-south-1' }}
 
       - name: Deploy Frontend to Web Server via SSM
+        if: ${{ secrets.WEB_SERVER_INSTANCE_ID != '' }}
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |

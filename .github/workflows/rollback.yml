@@ -24,6 +24,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Rollback App Server via SSM
+        if: ${{ secrets.APP_SERVER_INSTANCE_ID != '' }}
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ROLLBACK_VERSION: ${{ github.event.inputs.version }}
@@ -41,6 +42,7 @@ jobs:
             --region ${{ secrets.AWS_REGION || 'ap-south-1' }}
 
       - name: Rollback Web Server via SSM
+        if: ${{ secrets.WEB_SERVER_INSTANCE_ID != '' }}
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ROLLBACK_VERSION: ${{ github.event.inputs.version }}
