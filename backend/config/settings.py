@@ -23,6 +23,21 @@ ALLOWED_HOSTS = os.environ.get(
     'localhost,127.0.0.1,.onrender.com,.vercel.app,.elb.amazonaws.com'
 ).split(',')
 
+# Dynamically append private IP and localhost for AWS ALB health checks
+import socket
+try:
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    if local_ip not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(local_ip)
+except Exception:
+    pass
+
+if 'localhost' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('localhost')
+if '127.0.0.1' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('127.0.0.1')
+
 AUTH_USER_MODEL = 'core.User'
 
 # ========================
