@@ -46,12 +46,13 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Deploy Backend to App Server via SSM
-        if: ${{ secrets.APP_SERVER_INSTANCE_ID != '' }}
+        if: ${{ env.APP_SERVER_INSTANCE_ID != '' }}
         env:
+          APP_SERVER_INSTANCE_ID: ${{ secrets.APP_SERVER_INSTANCE_ID }}
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
           aws ssm send-command \
-            --instance-ids "${{ secrets.APP_SERVER_INSTANCE_ID }}" \
+            --instance-ids "$APP_SERVER_INSTANCE_ID" \
             --document-name "AWS-RunShellScript" \
             --parameters "commands=[
               \"aws ecr get-login-password --region ${{ secrets.AWS_REGION || 'ap-south-1' }} | docker login --username AWS --password-stdin $ECR_REGISTRY\",
@@ -63,12 +64,13 @@ jobs:
             --region ${{ secrets.AWS_REGION || 'ap-south-1' }}
 
       - name: Deploy Frontend to Web Server via SSM
-        if: ${{ secrets.WEB_SERVER_INSTANCE_ID != '' }}
+        if: ${{ env.WEB_SERVER_INSTANCE_ID != '' }}
         env:
+          WEB_SERVER_INSTANCE_ID: ${{ secrets.WEB_SERVER_INSTANCE_ID }}
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
           aws ssm send-command \
-            --instance-ids "${{ secrets.WEB_SERVER_INSTANCE_ID }}" \
+            --instance-ids "$WEB_SERVER_INSTANCE_ID" \
             --document-name "AWS-RunShellScript" \
             --parameters "commands=[
               \"aws ecr get-login-password --region ${{ secrets.AWS_REGION || 'ap-south-1' }} | docker login --username AWS --password-stdin $ECR_REGISTRY\",
