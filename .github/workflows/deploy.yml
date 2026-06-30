@@ -19,7 +19,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: ${{ secrets.AWS_REGION || 'ap-south-1' }}
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -53,13 +53,13 @@ jobs:
             --instance-ids "${{ secrets.APP_SERVER_INSTANCE_ID }}" \
             --document-name "AWS-RunShellScript" \
             --parameters "commands=[
-              \"aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin $ECR_REGISTRY\",
+              \"aws ecr get-login-password --region ${{ secrets.AWS_REGION || 'ap-south-1' }} | docker login --username AWS --password-stdin $ECR_REGISTRY\",
               \"docker pull $ECR_REGISTRY/foodbridge-backend:latest\",
               \"docker stop foodbridge-backend || true\",
               \"docker rm foodbridge-backend || true\",
               \"docker run -d --name foodbridge-backend --restart unless-stopped -p 8000:8000 --env-file /etc/foodbridge/backend.env $ECR_REGISTRY/foodbridge-backend:latest\"
             ]" \
-            --region ${{ secrets.AWS_REGION }}
+            --region ${{ secrets.AWS_REGION || 'ap-south-1' }}
 
       - name: Deploy Frontend to Web Server via SSM
         env:
@@ -69,13 +69,13 @@ jobs:
             --instance-ids "${{ secrets.WEB_SERVER_INSTANCE_ID }}" \
             --document-name "AWS-RunShellScript" \
             --parameters "commands=[
-              \"aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin $ECR_REGISTRY\",
+              \"aws ecr get-login-password --region ${{ secrets.AWS_REGION || 'ap-south-1' }} | docker login --username AWS --password-stdin $ECR_REGISTRY\",
               \"docker pull $ECR_REGISTRY/foodbridge-frontend:latest\",
               \"docker stop foodbridge-frontend || true\",
               \"docker rm foodbridge-frontend || true\",
               \"docker run -d --name foodbridge-frontend --restart unless-stopped -p 80:80 --env-file /etc/foodbridge/frontend.env $ECR_REGISTRY/foodbridge-frontend:latest\"
             ]" \
-            --region ${{ secrets.AWS_REGION }}
+            --region ${{ secrets.AWS_REGION || 'ap-south-1' }}
 
       - name: Wait for Settle
         run: sleep 15
