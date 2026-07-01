@@ -1,418 +1,149 @@
-# FoodBridge — Local Development Setup Guide
+# FoodBridge — Production-Grade 3-Tier AWS Architecture & Platform
 
-> A food waste reduction platform connecting food donors with verified NGOs.
-> **Stack**: Django 5 (Backend) + React 18 + Vite (Frontend) + SQLite (Dev DB)
-
----
-
-## Prerequisites
-
-Make sure the following are installed on your machine before starting:
-
-| Tool | Version Required | Download |
-|------|-----------------|----------|
-| Python | 3.11.x | https://python.org/downloads |
-| Node.js | 18+ (20 or 24 recommended) | https://nodejs.org |
-| npm | 8+ (comes with Node) | included with Node |
-| Git | Any | https://git-scm.com |
-
-Verify your versions:
-```bash
-python --version   # Expected: Python 3.11.x
-node --version     # Expected: v18.x or v24.x
-npm --version      # Expected: 8+
-```
+> **A High-Availability, Secure, and Automated Food Waste Reduction Platform Connecting Donors with Verified NGOs.**
+> 
+> **Production Live URL**: [https://foodbridge.sanketdevs.online](https://foodbridge.sanketdevs.online)
+> 
+> **Stack**: Django 5 (REST API Backend) + React 18 & Vite (Nginx Frontend) + Amazon RDS PostgreSQL (Database) + AWS ECR (Container Registry) + GitHub Actions (CI/CD)
 
 ---
 
-## Project Structure
+## 🏗️ Production Architecture Overview
 
-```
-d:\FoodBridgeProject\
-└── foodbridge\
-    ├── backend\        ← Django REST API (port 8000)
-    │   ├── config\     ← Django settings, URLs, WSGI
-    │   ├── core\       ← User auth, Organization models
-    │   ├── donations\  ← Donation, Claim models & API
-    │   ├── manage.py
-    │   ├── requirements.txt
-    │   ├── .env        ← Backend environment variables
-    │   └── venv\       ← Python virtual environment
-    └── frontend\       ← React + Vite app (port 5173)
-        ├── src\
-        │   ├── pages\
-        │   ├── components\
-        │   └── utils\
-        ├── package.json
-        └── .env        ← Frontend environment variables
-```
+This project is deployed using a production-ready **3-Tier AWS Architecture** to ensure security, scalability, high availability, and zero single-points-of-failure. 
 
----
+### 🖼️ System Architecture Diagram
+*(Below is the conceptual architecture diagram of the deployment)*
 
-## Quick Start (2 Terminals Required)
+![AWS 3-Tier Architecture Diagram](AWS_cloud_architecture_diagram_.jpeg)
 
-> **Important**: You need **two separate terminal windows** — one for the backend and one for the frontend. Both must be running at the same time.
+### Key Architectural Pillars
+
+*   **Multi-AZ High Availability**: Deployed across two Availability Zones (`ap-south-1a` and `ap-south-1b`) in the Mumbai region.
+*   **Isolated Subnet Security**: 
+    *   **Public Web Tier**: Hosts the Internet-facing Application Load Balancer (ALB) and Nginx/React Web servers.
+    *   **Private Application Tier**: Django REST API servers run in private subnets, shielded from direct internet access.
+    *   **Private Database Tier**: Amazon RDS PostgreSQL instance runs in isolated database subnets, accessible only from the App Tier.
+*   **Outbound Internet Gateway Protection**: Private App EC2 instances communicate with the outer internet (e.g., ECR login, SMTP mailers) through a **NAT Gateway** in the public subnet.
+*   **Auto Scaling Groups (ASG)**: Both the Web (Nginx) and App (Django) tiers are managed by independent Auto Scaling Groups, configured to scale between 1 and 2 instances based on demand.
+*   **Dual Load Balancing**: 
+    *   **External ALB**: Terminates public SSL/TLS (HTTPS) traffic on port 443 via an AWS Certificate Manager (ACM) SSL certificate and forwards it to the Web Tier.
+    *   **Internal ALB**: Acts as a private proxy, forwarding API requests securely from Nginx to Gunicorn/Django on port 8000.
 
 ---
 
-## Terminal 1 — Backend Setup
+## 🛠️ Infrastructure Configuration (VPC Spec)
 
-### Step 1: Navigate to the backend folder
+| Component | Resource Name | Details |
+|-----------|---------------|---------|
+| **Region** | `ap-south-1` | Asia Pacific (Mumbai) |
+| **VPC** | `foodbridge-vpc-vpc` | CIDR: `192.168.0.0/16` |
+| **Public Subnets** | `foodbridge-public-a`, `foodbridge-public-b` | `192.168.0.0/24`, `192.168.16.0/24` (Hosts Web ALB & Frontend) |
+| **Private App Subnets** | `foodbridge-app-a`, `foodbridge-app-b` | `192.168.128.0/24`, `192.168.176.0/24` (Hosts Django API Backend) |
+| **Private DB Subnets** | `foodbridge-db-a`, `foodbridge-db-b` | `192.168.160.0/24`, `192.168.144.0/24` (Hosts RDS PostgreSQL) |
+| **NAT Gateway** | `foodbridge-vpc-nat...` | Associated with Elastic IP, deployed in `ap-south-1a` |
+| **RDS Instance** | `foodbridge-db` | Engine: `PostgreSQL 16`, Instance: `db.t4g.micro` |
+
+---
+
+## 🚀 CI/CD GitOps Pipeline & Automation
+
+The application uses an automated **GitHub Actions** deployment pipeline that executes on every push to the `main` branch:
+
+1.  **Build & Containerize**: Compiles Docker images for both frontend (`frontend/Dockerfile`) and backend (`backend/Dockerfile`).
+2.  **ECR Registry Push**: Authenticates with AWS and pushes compiled images to private **Amazon Elastic Container Registry (ECR)** repositories tagged with the specific git commit SHA and `latest`.
+3.  **SSM Auto-Deploy**: Triggers deployment commands securely using the **AWS Systems Manager (SSM) Agent** on the target EC2 instances. It pulls the latest ECR images, stops old containers, loads environment configurations from the SSM Parameter Store, and launches the updated containers dynamically without exposing SSH keys to GitHub.
+
+---
+
+## 📸 AWS Infrastructure Evidence (Proofs)
+
+Below are the snapshots from the AWS Console proving the complete setup and successful deployment of the platform.
+
+### 🌐 VPC & Networking
+| Resource | Screenshot | Description |
+|---|---|---|
+| **VPC Dashboard** | ![VPC Dashboard](SS/01_vpc_dashboard.png) | VPC resources allocated in the ap-south-1 region. |
+| **VPC Resource Map** | ![VPC Resource Map](SS/02_vpc_resource_map.png) | Map showing route tables, Internet Gateway, and NAT Gateway routing paths. |
+| **Subnet Allocations** | ![Subnet Allocations](SS/03_vpc_subnets_list.png) | 6 subnets mapped across ap-south-1a and ap-south-1b. |
+| **NAT Gateway** | ![NAT Gateway](SS/04_nat_gateway.png) | Public NAT Gateway configured with Elastic IP for private subnets outbound traffic. |
+| **Elastic IP List** | ![Elastic IP](SS/05_elastic_ip_addresses.png) | Static IPs allocated for NAT Gateway and Load Balancer endpoints. |
+
+### 🔒 Security & Database
+| Resource | Screenshot | Description |
+|---|---|---|
+| **Security Groups** | ![Security Groups](SS/06_security_groups_list.png) | Least-privilege ingress configurations (Web-SG, App-SG, AppALB-SG, WebALB-SG, Database-SG). |
+| **Inbound Rules Spec** | ![Security Group Rules](SS/07_vpc_security_groups_inbound_rules.png) | Detailed list showing port 8000 and database port 5432 security bounds. |
+| **Amazon RDS Summary** | ![RDS PostgreSQL](SS/08_rds_database_summary.png) | Active PostgreSQL database running in the private db subnet. |
+
+### ⚙️ Compute, Scaling & Load Balancing
+| Resource | Screenshot | Description |
+|---|---|---|
+| **Initial EC2 Instances** | ![Initial Instances](SS/09_ec2_instances_running_initial.png) | Initial running instances of App Server and Web Server. |
+| **Autoscaled Instances** | ![Autoscaled Instances](SS/10_ec2_instances_running_autoscaled.png) | Multiple instances running simultaneously under Auto Scaling Group management. |
+| **Load Balancers** | ![Load Balancers](SS/11_load_balancers_list.png) | Active Internal (App) and External (Web) Application Load Balancers. |
+| **Target Groups Overview** | ![Target Groups](SS/12_target_groups_list.png) | Mapped Target Groups directing traffic to port 8000 (Backend) and port 80 (Frontend). |
+| **Web Target Group Health** | ![Web Target Health](SS/13_web_target_group_state.png) | Active targets serving React frontend behind the external load balancer. |
+| **App Target Group Health** | ![App Target Health](SS/14_app_target_group_healthy_state.png) | Django backend servers showing `Healthy` status on port 8000. |
+| **Auto Scaling Dashboard** | ![Auto Scaling](SS/15_auto_scaling_groups_dashboard.png) | ASG policies maintaining high availability of both tiers. |
+
+### 🧬 DevOps Automation & Configuration
+| Resource | Screenshot | Description |
+|---|---|---|
+| **SSM Parameter Store** | ![SSM Parameter Store](SS/16_ssm_parameter_store.png) | Environment variables, database URL, credentials, and settings stored securely. |
+| **ACM SSL Certificate** | ![ACM Certificate](SS/17_acm_ssl_certificate_details.png) | AWS Certificate Manager issued certificate for `foodbridge.sanketdevs.online` validation. |
+| **GitHub Repository** | ![GitHub Repo](SS/18_github_repository_main.png) | Master repository code, Actions workflow, and project scripts. |
+| **CI/CD Workflow Runs** | ![GitHub Actions Pipeline](SS/19_github_actions_workflow_runs.png) | Successful Git-triggered builds pushing images to ECR and deploying via SSM. |
+
+### 🌐 Live Platform Screenshots
+| Screen | Screenshot | Description |
+|---|---|---|
+| **NGO Web Dashboard** | ![NGO Dashboard](SS/20_live_app_ngo_dashboard.png) | Authenticated dashboard showing available food claims, SSL verified (Padlock active). |
+| **Admin Control Dashboard** | ![Admin Dashboard](SS/21_live_app_admin_dashboard.png) | Admin dashboard monitoring organization verifications and transaction email logs. |
+
+---
+
+## 🛠️ Local Development Setup Guide
+
+For testing, debugging, or running the application locally on your machine, follow the steps below.
+
+### Local Setup Prerequisites
+*   Python 3.11.x
+*   Node.js v18+ (Node 20 or 24 recommended)
+*   SQLite (default local database)
+
+### Terminal 1 — Django Backend
 ```powershell
-cd d:\FoodBridgeProject\foodbridge\backend
-```
-
-### Step 2: Create a Python virtual environment (first time only)
-```powershell
+cd backend
 python -m venv venv
-```
-
-### Step 3: Activate the virtual environment
-
-**Windows (PowerShell):**
-```powershell
 .\venv\Scripts\Activate.ps1
-```
-
-**Windows (Command Prompt):**
-```cmd
-venv\Scripts\activate.bat
-```
-
-> ✅ You'll see `(venv)` prefix in your terminal when it's active.
-
-> ⚠️ **PowerShell Execution Policy Error?** Run this first:
-> ```powershell
-> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-> ```
-
-### Step 4: Install Python dependencies (first time only)
-```powershell
 pip install -r requirements.txt
-```
-
-### Step 5: Create the `.env` file (first time only)
-
-Create a file named `.env` inside `d:\FoodBridgeProject\foodbridge\backend\` with this content:
-
-
-
-> 💡 This file already exists at `d:\FoodBridgeProject\foodbridge\backend\.env` — no action needed if running on the same machine.
-
-### Step 6: Run database migrations (first time only)
-```powershell
 python manage.py migrate
-```
-
-Expected output:
-```
-Operations to perform:
-  Apply all migrations: admin, auth, contenttypes, core, django_q, donations, sessions, token_blacklist
-Running migrations:
-  Applying ... OK
-  ...
-```
-
-### Step 7: Create the admin superuser (first time only)
-
-```powershell
-python manage.py shell -c "
-from core.models import User
-if not User.objects.filter(email='prajapatisanketssp321@gmail.com').exists():
-    User.objects.create_superuser('prajapatisanketssp321@gmail.com', 'sanket', full_name='Sanket Prajapati')
-    print('Admin created')
-else:
-    print('Admin already exists')
-"
-```
-
-> **Admin credentials**: `admin@foodbridge.com` / `admin123`
-
-### Step 8: Collect static files (first time only)
-```powershell
 python manage.py collectstatic --noinput
-```
-
-### Step 9: Start the Django development server
-```powershell
 python manage.py runserver
 ```
+*Backend runs locally at: **http://localhost:8000***
 
-Expected output:
-```
-Django version 5.0.3, using settings 'config.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CTRL-BREAK.
-```
-
-> ✅ Backend is now running at: **http://localhost:8000**
-> 📊 Admin panel: **http://localhost:8000/admin/**
-> 🩺 Health check: **http://localhost:8000/api/health/**
-
----
-
-## Terminal 2 — Frontend Setup
-
-### Step 1: Navigate to the frontend folder
+### Terminal 2 — React Frontend
 ```powershell
-cd d:\FoodBridgeProject\foodbridge\frontend
-```
-
-### Step 2: Install Node dependencies (first time only)
-```powershell
+cd frontend
 npm install
-```
-
-### Step 3: Create the `.env` file (first time only)
-
-Create a file named `.env` inside `d:\FoodBridgeProject\foodbridge\frontend\` with this content:
-
-```env
-VITE_API_URL=http://localhost:8000/api
-```
-
-> 💡 This file already exists — no action needed if running on the same machine.
-
-### Step 4: Start the Vite development server
-```powershell
 npm run dev
 ```
-
-Expected output:
-```
-  VITE v8.x.x  ready in xxx ms
-
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: http://192.168.x.x:5173/
-```
-
-> ✅ Frontend is now running at: **http://localhost:5173**
+*Frontend runs locally at: **http://localhost:5173***
 
 ---
 
-## Verify Everything is Working
+## 🔑 Pre-Configured Test Credentials
 
-Open your browser and check each of these URLs:
+Use these pre-seeded accounts to explore the platform features locally or in production:
 
-| URL | Expected Result |
-|-----|----------------|
-| `http://localhost:8000/api/health/` | `{"status": "ok"}` |
-| `http://localhost:8000/api/stats/` | JSON with donation/NGO counts |
-| `http://localhost:8000/admin/` | Django Admin login page |
-| `http://localhost:5173/` | FoodBridge Home page |
-| `http://localhost:5173/donations` | Available food listings |
-
----
-
-## Test Accounts
-
-These accounts are pre-loaded in the local database:
-
-| Role | Email | Password | Notes |
-|------|-------|----------|-------|
-| **Admin** | `admin@foodbridge.com` | `admin123` | Access Django Admin |
-| **Donor** | `donorjoe@example.com` | `password123` | Can post donations |
-| **NGO** | `ngoa@example.com` | `password123` | Verified, can claim food |
-
----
-
-## Full Feature Walkthrough
-
-### 1. Post a Donation (as Donor)
-1. Login at `/login` with `donorjoe@example.com` / `password123`
-2. Click **"Donate"** in the navbar
-3. Fill in the 4-step form: Details → Location → Photos → Review
-4. Click **"Post Donation"**
-5. Donation appears on `/donations` feed
-
-### 2. Claim a Donation (as NGO)
-1. Login at `/login` with `ngoa@example.com` / `password123`
-2. Browse `/donations` and click a donation
-3. Click **"Claim for My NGO"**
-4. You'll be redirected to `/my-claims`
-5. Your **6-digit OTP code** is shown on the card (also emailed to you)
-
-### 3. Verify Pickup OTP (as Donor)
-1. Login as the donor who posted the food
-2. Go to `/my-donations`
-3. On a "CLAIMED" donation, enter the 6-digit OTP from the NGO
-4. Click **"Verify & Complete"**
-5. Status changes to **PICKED_UP** — donor gets a confirmation email
-
-### 4. Verify an NGO (as Admin)
-1. Go to `http://localhost:8000/admin/`
-2. Login with `admin@foodbridge.com` / `admin123`
-3. Click **Organizations** → select NGO → choose **"Verify selected NGOs"** action
-4. NGO receives a verification email and can now claim food
-
----
-
-## All Frontend Routes
-
-| Route | Page | Who Can Access |
-|-------|------|----------------|
-| `/` | Home (landing page) | Everyone |
-| `/about` | About FoodBridge | Everyone |
-| `/register` | Register as Donor or NGO | Everyone |
-| `/login` | Login | Everyone |
-| `/verify-email` | Verify email from link | Everyone |
-| `/donations` | Browse available food | Everyone |
-| `/donations/:id` | Donation detail | Everyone |
-| `/donate` | Post a donation | Donor only |
-| `/my-donations` | Manage your donations + OTP verify | Donor only |
-| `/my-claims` | View claims + OTP codes | NGO only |
-| `/org/create` | Create NGO profile | NGO only |
-| `/org/profile` | Edit NGO settings | NGO only |
-| `/profile` | User profile | Logged-in users |
-| `/activity` | Activity/notification history | Logged-in users |
-
----
-
-## All API Endpoints
-
-### Public Endpoints (no auth required)
-```
-GET  /api/health/                  Health check
-GET  /api/stats/                   Platform statistics
-POST /api/register/                Register new user
-POST /api/login/                   Login (returns JWT tokens)
-GET  /api/verify-email/?token=...  Verify email address
-GET  /api/donations/               List available donations
-GET  /api/donations/<id>/          Donation detail
-```
-
-### Authenticated Endpoints
-```
-POST /api/logout/                  Logout (blacklists JWT)
-GET  /api/profile/                 Get your profile
-PUT  /api/profile/update/          Update profile
-
-# NGO Organization
-POST /api/orgs/create/             Create NGO organization
-GET  /api/orgs/my/                 Get your organization
-PUT  /api/orgs/update/             Update organization
-
-# Donations (Donor)
-POST /api/donations/create/        Post a new donation
-GET  /api/donations/my/            My donations list
-PUT  /api/donations/<id>/update/   Update donation
-POST /api/donations/<id>/cancel/   Cancel donation
-
-# Claims (NGO)
-POST /api/claims/create/           Claim a donation
-GET  /api/claims/my/               My claims list
-
-# OTP Verification (Donor)
-POST /api/claims/<id>/verify-otp/  Verify pickup OTP
-```
-
----
-
-## Starting the Project Every Day
-
-After the first-time setup, you only need to run these commands each time:
-
-**Terminal 1 (Backend):**
-```powershell
-cd d:\FoodBridgeProject\foodbridge\backend
-.\venv\Scripts\Activate.ps1
-python manage.py runserver
-```
-
-**Terminal 2 (Frontend):**
-```powershell
-cd d:\FoodBridgeProject\foodbridge\frontend
-npm run dev
-```
-
-Then open **http://localhost:5173** in your browser. That's it! ✅
-
----
-
-## Troubleshooting
-
-### ❌ "No module named X" after activating venv
-```powershell
-pip install -r requirements.txt
-```
-
-### ❌ PowerShell says "cannot be loaded because running scripts is disabled"
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-### ❌ Frontend shows "Network Error" or API calls fail
-- Ensure the backend is running on port 8000
-- Check that `frontend/.env` contains `VITE_API_URL=http://localhost:8000/api`
-- Check that `backend/.env` has `CORS_ALLOWED_ORIGINS=http://localhost:5173`
-
-### ❌ Django Admin login fails
-Run the admin creation command from Step 7 above.
-
-### ❌ "Migrations not applied" errors
-```powershell
-cd d:\FoodBridgeProject\foodbridge\backend
-.\venv\Scripts\Activate.ps1
-python manage.py migrate
-```
-
-### ❌ NGO says "Only verified NGOs can claim food"
-1. Login to admin at `http://localhost:8000/admin/`
-2. Go to **Organizations** → select the NGO → **"Verify selected NGOs"** action
-
-### ❌ Port 8000 or 5173 already in use
-Kill the process using the port:
-```powershell
-# Kill port 8000
-netstat -ano | findstr :8000
-taskkill /PID <PID_NUMBER> /F
-
-# Kill port 5173
-netstat -ano | findstr :5173
-taskkill /PID <PID_NUMBER> /F
-```
-
----
-
-## Tech Stack Reference
-
-| Layer | Technology |
-|-------|-----------| 
-| Backend Framework | Django 5.0.3 |
-| API | Django REST Framework |
-| Authentication | JWT (`djangorestframework-simplejwt`) |
-| CORS | `django-cors-headers` |
-| Database (dev) | SQLite 3 |
-| Database (prod) | PostgreSQL (via `dj-database-url`) |
-| Geocoding | `geopy` Nominatim |
-| Email | Gmail SMTP |
-| Static Files | WhiteNoise |
-| Frontend Framework | React 18 + Vite 8 |
-| Styling | Tailwind CSS 3.4 |
-| Routing | React Router v7 |
-| Icons | Lucide React |
-| State Management | `useState` + `localStorage` |
-
----
-
-## 🔑 Default Credentials & Accounts (For Testing & Validation)
-
-Below are the pre-configured database user credentials loaded via setup fixtures and seeding scripts:
-
-### 👤 Admin User (Django Admin Panel & Admin Dashboard)
-*   **Email/Username**: `foodbridge.admin.connect@gmail.com`
-*   **Password**: `pass@123`
-
-### 👤 Test Donor User (For Creating Donations)
-*   **Email/Username**: `prajapatisanketssp321@gmail.com`
-*   **Password**: `pass@123`
-
-### 👤 Test NGO User (For Claiming Donations)
-*   **Email/Username**: `sanketprajapatipdp@gmail.com`
-*   **Password**: `pass@123`
-*   **NGO Organization Name**: `Sanket Welfare` (Auto-verified)
+| Role | Email / Username | Password | Access Level |
+|---|---|---|---|
+| **Admin** | `foodbridge.admin.connect@gmail.com` | `pass@123` | Django Admin & Organization Verifications |
+| **Donor** | `prajapatisanketssp321@gmail.com` | `pass@123` | Creating food donations & verifying OTPs |
+| **NGO** | `sanketprajapatipdp@gmail.com` | `pass@123` | Claiming donations (NGO: *Sanket Welfare*) |
 
 ---
 
 *FoodBridge — Reducing food waste, one meal at a time. 🌿*
-
